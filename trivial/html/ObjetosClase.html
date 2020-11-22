@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/trivial.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+</head>
+<body>
+
+    <div class="jumbotron">
+        EDUIPCA
+    </div>
+
+    <div class="botonIniciar">
+        <button id="btnIniciar" class="btn btn-primary" onClick="iniciarTest()">Iniciar Test</button>
+    </div>
+
+    <div class="container">
+        
+        <div class="row">
+            <div id="grid1" class="col-sm-5">
+
+            </div>
+        </div>
+            <!--
+            <div id="grid2" class="col-sm-5">
+
+            </div>
+            -->
+        <div class="row">
+            <div id="grid2" class="col-sm-2">
+                <p>Rigth Answer: <span class="rigthCounter">0</span></p>
+                <p>Wrong Answer: <span class="wrongCounter">0</span></p>
+            </div>
+        </div>
+        </div>
+        <button id="btnNext" class="btn btn-primary btn-block" onclick="printHTMLQuestion(currentQuestionIndex)">Siguiente</button>
+    </div>
+    
+    <script src="../js/ObjetosClase.js"></script>
+
+</body>
+</html>

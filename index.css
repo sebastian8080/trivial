@@ -1,0 +1,33 @@
+.jumbotron{
+    text-align: center;
+    background-color: #67b999;
+}
+
+.row{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.card-deck{
+    padding-bottom: 30px;
+}
+
+.container{
+    padding-bottom: 40px;
+}
+
+.card-title{
+    text-align: center;
+}
+
+.card-img-top{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#img2{
+    width: 100%;
+    height: 82%;
+}

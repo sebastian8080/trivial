@@ -1,0 +1,35 @@
+.jumbotron{
+    text-align: center;
+}
+
+img{
+    height: 100%;
+    width: 100%;
+}
+
+.card-body{
+    text-align: center;
+    display: flexbox;
+}
+
+.row{
+    margin-bottom: 30px;
+}
+
+.card {
+    width: 250px;
+    height: 250px;
+    background: #125e1c;
+    transition: width 2s, height 2s, margin 2s;
+    margin: 50px auto 0;
+    margin-bottom: 15px;
+}
+.card:hover{
+    width: 100%;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.container{
+    padding-bottom: 50px;
+}

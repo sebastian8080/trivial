@@ -1,0 +1,112 @@
+
+let rigthAnswer = null;
+let currentQuestionIndex = 0;
+
+//CONTADORES DE LAS RESPUESTAS CORRECTAS E INCORRECTAS
+let rigthAnswers = 0;
+let wrongAnswers = 0;
+
+//Variable global para reproducir y pausar el audio
+let audio;
+let audio_section;
+
+const cuestionary = [
+    {
+        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "image_answer": ["../../img/imganimales/vaca_animada.png", "../../img/imganimales/caballo_animado.png"]
+    },
+    {
+        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "image_answer": ["../../img/imganimales/caballo_animado.png", "../../img/imganimales/vaca_animada.png"]
+    },
+    {
+        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "image_answer": ["../../img/imganimales/cerdo_animado.png", "../../img/imganimales/rinoceronte_animado.png"]
+    },
+    {
+        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "image_answer": ["../../img/imganimales/aguila_animada.png", "../../img/imganimales/buho_animado.png"]
+    },
+    {
+        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "image_answer": ["../../img/imganimales/delfin_animado.png", "../../img/imganimales/ballena_animada.png"]
+    },
+    {
+        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "image_answer": ["../../img/imganimales/elefante_animado.png", "../../img/imganimales/jirafa_animada.png"]
+    },
+    {
+        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "image_answer": ["../../img/imganimales/gallina_animada.png", "../../img/imganimales/pato_animado.png"]
+    },
+    {
+        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "image_answer": ["../../img/imganimales/perro_animado.png", "../../img/imganimales/gato_animado.png"]
+    },
+    {
+        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "image_answer": ["../../img/imganimales/leon_animado.png", "../../img/imganimales/oso_animado.png"]
+    }
+];
+
+const printHTMLQuestion = (i) => {
+    //currentQuestionIndex++;
+    let longitud_array = Object.keys(cuestionary).length;
+
+    if (currentQuestionIndex <= longitud_array) {
+        const q = cuestionary[i];
+        let a = q.image_answer;
+        rigthAnswer = a[0];
+
+        a = a.sort((a, b) => Math.floor(Math.random() * 3) - 1);
+
+        audio = new Audio(q.audio_question);
+        audio.play();
+
+        audio_section = new Audio(q.audio_section);
+        audio_section.play();
+
+        let idimageQuestion = 1; //Variable para ponerle en el Id del boton
+
+        const htmlAnswerArray = a.map(currentA =>
+            `<button id="answer${idimageQuestion++}" class="btn btn-primary" onClick="evaluateAnswer('${currentA}', this)"><img src="${currentA}"></img></button>`,
+        );
+
+        const htmlAnswer = htmlAnswerArray.join(' ');
+        document.querySelector('#grid1').innerHTML = htmlAnswer;
+
+        document.querySelector('#btnNext').disabled = true;
+
+    } else {
+        alert("Juego terminado");
+        document.querySelector('#btnNext').remove();
+        window.location.href = "../../sections.html";
+        audio_section.pause();
+    }
+
+}
+
+const evaluateAnswer = (answer, obj) => {
+    document.querySelectorAll('#answer').forEach(a => a.classList.remove('rigth', 'wrong'));
+    const parentP = obj.parentNode;
+    if (answer == rigthAnswer) {
+        parentP.classList.add('rigth');
+        rigthAnswers++;
+        document.querySelector('.rigthCounter').innerHTML = rigthAnswers;
+        document.querySelector('#btnNext').disabled = false;
+        currentQuestionIndex++;
+        printHTMLQuestion(currentQuestionIndex);
+    } else {
+        parentP.classList.add('wrong');
+        wrongAnswers++;
+        document.querySelector('.wrongCounter').innerHTML = wrongAnswers;
+    }
+}
+
+const iniciarTest = _ => {
+    printHTMLQuestion(currentQuestionIndex);
+    document.querySelector('#btnIniciar').style.display = 'none';
+    document.querySelector('.container').style.display = 'block';
+    document.querySelector('#btnNext').style.display = 'none';
+}
+
