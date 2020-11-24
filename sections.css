@@ -33,3 +33,20 @@ img{
 .container{
     padding-bottom: 50px;
 }
+
+button{
+    bottom: 10px;
+    right: 10px;
+    position: fixed;
+    z-index: 9999;
+}
+
+.flotante {
+    display:scroll;
+    position:fixed;
+    bottom:320px;
+    right:0px;
+    border: 0;
+    width: 80px;
+    height: 80px;
+}
