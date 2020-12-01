@@ -12,9 +12,11 @@ let audio_section;
 //Variables para despues de detectar el boton del raton mandarlas a la funcion evaluateAnswer
 let respuesta, objeto;
 
+let titulo = "Objetos de la Clase"
+
 const cuestionary = [
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_animales/Audio_ballena.mp3",
         "image_answer": ["../../img/imgobjetosclase/boligrafo.png", "../../img/imgobjetosclase/borrador.png"]
     },
     {
@@ -50,6 +52,8 @@ const cuestionary = [
         "image_answer": ["../../img/imgobjetosclase/tijera.png", "../../img/imgobjetosclase/pega.png"]
     }
 ];
+
+document.querySelector(".jumbotron").innerHTML = titulo;
 
 function detectarBoton(event){
     if(event.button == 2){
@@ -90,8 +94,7 @@ const printHTMLQuestion = (i) => {
         const htmlAnswer = htmlAnswerArray.join(' ');
         document.querySelector('#grid1').innerHTML = htmlAnswer;
         
-        document.querySelector('#btnNext').disabled = true;
-
+        document.querySelector("#btnNext").disabled = true;
     } else {
         alert("Juego terminado");
         document.querySelector('#btnNext').remove();
@@ -102,14 +105,14 @@ const printHTMLQuestion = (i) => {
 
 const evaluateAnswer = (answer, obj) => {
 
-    document.querySelectorAll('#answer').forEach(a => a.classList.remove('rigth', 'wrong'));
+    document.querySelectorAll('#grid1').forEach(a => a.classList.remove('rigth', 'wrong'));
     const parentP = obj.parentNode;
     if (answer == rigthAnswer) {
         audio.pause();
         parentP.classList.add('rigth');
         rigthAnswers++;
         document.querySelector('.rigthCounter').innerHTML = rigthAnswers;
-        document.querySelector('#btnNext').disabled = false;
+        document.querySelector('#btnNext').disabled = true;
         currentQuestionIndex++;
         printHTMLQuestion(currentQuestionIndex);
     } else {

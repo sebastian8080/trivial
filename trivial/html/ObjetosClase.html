@@ -19,10 +19,10 @@
         <button id="btnIniciar" class="btn btn-primary" onClick="iniciarTest()">Iniciar Test</button>
     </div>
 
-    <div class="container" onmousedown="detectarBoton(evento);">
+    <div class="container" onmousedown="detectarBoton(event);">
         
         <div class="row">
-            <div id="grid1" class="col-sm-5">
+            <div id="grid1" class="col-sm-12">
 
             </div>
         </div>
@@ -31,7 +31,6 @@
                 <p>Respuestas Correctas: <span class="rigthCounter">0</span></p>
                 <p>Respuestas Incorrectas: <span class="wrongCounter">0</span></p>
             </div>
-        </div>
         </div>
         <button id="btnNext" class="btn btn-primary btn-block" onclick="printHTMLQuestion(currentQuestionIndex)">Siguiente</button>
     </div>
