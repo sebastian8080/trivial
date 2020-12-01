@@ -1,11 +1,3 @@
-// //Variables para johnny-five
-
-// var five = require("johnny-five");
-
-// //Instanciamos
-// var board = new five.Board();
-
-//Variables para contar las respuestas correctas e incorrectas
 let rigthAnswer = null;
 let currentQuestionIndex = 0;
 
@@ -60,36 +52,14 @@ let respuesta, objeto;
             }
         ];
 
-        // board.on("ready", function(){
-        //     console.log("Placa lista");
-
-        //     button2 = new five.Button({
-        //         pin: 2,
-        //         isPullup: true
-        //     });
-
-        //     button3 = new five.Button({
-        //         pin: 3,
-        //         isPullup: true
-        //     });
-
-        //     button2.on("down", function(){
-        //         console.log("button2 presionado");
-        //     });
-
-        //     button3.on("down", function(){
-        //         console.log("button3 presionado");
-        //     });
-        // });
-
         function detectarBoton(event){
             if(event.button == 2){
                 respuesta = document.getElementById("img2").getAttribute("src");
-                objeto = document.getElementById("answer2");
+                document.oncontextmenu = document.body.oncontextmenu = function(){ return false};
             } else if (event.button == 0){
-                var respuesta = document.getElementById("img1").getAttribute("src");
-                var objeto = document.getElementById("answer1");
+                respuesta = document.getElementById("img1").getAttribute("src");
             }
+            objeto = document.getElementById("grid1");
             evaluateAnswer(respuesta, objeto);
         }
 
@@ -117,7 +87,6 @@ let respuesta, objeto;
                    `<button id="answer${idimageQuestion++}" class="btn btn-primary" onClick="evaluateAnswer('${currentA}', this)"><img id="img${idimage++}" src="${currentA}"></img></button>`,   
                 );
 
-
                 const htmlAnswer = htmlAnswerArray.join(' ');    
                 document.querySelector('#grid1').innerHTML = htmlAnswer;
 
@@ -133,8 +102,10 @@ let respuesta, objeto;
         }
 
         const evaluateAnswer = (answer, obj) => {
+
+            console.log(answer + " " + obj);
             
-            document.querySelectorAll('#answer').forEach(a => a.classList.remove('rigth', 'wrong'));
+            document.querySelector('#grid1').classList.remove('rigth', 'wrong');
             const parentP = obj.parentNode;
             if (answer == rigthAnswer) {
                 audio.pause();
@@ -143,21 +114,18 @@ let respuesta, objeto;
                 document.querySelector('.rigthCounter').innerHTML = rigthAnswers;
                 document.querySelector('#btnNext').disabled = false;
                 currentQuestionIndex++;
-                alert('Bien hecho');
                 printHTMLQuestion(currentQuestionIndex);
             } else {
                 parentP.classList.add('wrong');
                 wrongAnswers++;
                 document.querySelector('.wrongCounter').innerHTML = wrongAnswers;
-                alert('Intentalo nuevamente :(');
             }
         }
 
-        const iniciarTest = _ =>{
+        const iniciarTest = _ => {
             printHTMLQuestion(currentQuestionIndex);
             document.querySelector('#btnIniciar').style.display = 'none';
             document.querySelector('.container').style.display = 'block';
             document.querySelector('#btnNext').style.display = 'none';
         }
-        
         

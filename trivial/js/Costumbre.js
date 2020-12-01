@@ -1,4 +1,3 @@
-
 let rigthAnswer = null;
 let currentQuestionIndex = 0;
 
@@ -9,6 +8,9 @@ let wrongAnswers = 0;
 //Variable global para reproducir y pausar el audio
 let audio;
 let audio_section;
+
+//Variables para obtener la respuesta y el objeto button
+let respuesta, objeto;
 
 const cuestionary = [
     {
@@ -49,6 +51,17 @@ const cuestionary = [
     }
 ];
 
+function detectarBoton(event){
+    if(event.button == 2){
+        respuesta = document.getElementById("img2").getAttribute("src");
+        document.oncontextmenu = document.body.oncontextmenu = function(){return false};
+    } else if(event.button == 0){
+        respuesta = document.getElementById("img1").getAttribute("src");
+    }
+    objeto = document.getElementById("grid1");
+    evaluateAnswer(respuesta, objeto);
+}
+
 const printHTMLQuestion = (i) => {
     //currentQuestionIndex++;
     let longitud_array = Object.keys(cuestionary).length;
@@ -67,9 +80,10 @@ const printHTMLQuestion = (i) => {
         audio_section.play();
 
         let idimageQuestion = 1; //Variable para ponerle en el Id del boton
+        let idimage = 1;
 
         const htmlAnswerArray = a.map(currentA =>
-            `<button id="answer${idimageQuestion++}" class="btn btn-primary" onClick="evaluateAnswer('${currentA}', this)"><img src="${currentA}"></img></button>`,
+            `<button id="answer${idimageQuestion++}" class="btn btn-primary" onClick="evaluateAnswer('${currentA}', this)"><img id="img${idimage++}" src="${currentA}"></img></button>`,
         );
 
         const htmlAnswer = htmlAnswerArray.join(' ');

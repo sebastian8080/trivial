@@ -5,6 +5,7 @@
 .wrong{
     background: red;
 }
+
 img{
     height: 400px;
     width: 400px;
@@ -29,4 +30,8 @@ img{
 
 #grid2{
     padding-top: 20px;
+}
+
+#alertBien, #alertMal{
+    display: none;
 }

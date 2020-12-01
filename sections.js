@@ -3,8 +3,7 @@ var x = document.getElementById('ventanaAyuda');
 function abrirAyuda(){
     if (x.style.visibility === "hidden") {
         x.style.visibility = "visible";
+    } else {
+        x.style.visibility = "hidden";
     }
 }
-document.getElementById('btnCerrarAyuda').addEventListener("click", () => {
-    x.style.visibility = "hidden";
-});

@@ -5,8 +5,11 @@ let currentQuestionIndex = 0;
 let rigthAnswers = 0;
 let wrongAnswers = 0;
 
-let opcion;
-let opciones = [];
+//Variables para los audio
+let audio, audio_section;
+
+//Variables para obtener la respuesta y el objeto button
+let respuesta, objeto;
 
 const cuestionary = [
     {
@@ -47,6 +50,17 @@ const cuestionary = [
     }
 ];
 
+function detectarBoton(event){
+    if(event.button == 2){
+        respuesta = document.getElementById("img2").getAttribute("src");
+        document.oncontextmenu = document.body.oncontextmenu = function(){return false};
+    }else if(event.button == 0){
+        respuesta = document.getElementsById("img1").getAttribute("src");
+    }
+    objeto = document.getElementsById("grid1");
+    evaluateAnswer(respuesta, objeto);
+}
+
 const printHTMLQuestion = (i) => {
     //currentQuestionIndex++;
     let longitud_array = Object.keys(cuestionary).length;
@@ -58,28 +72,29 @@ const printHTMLQuestion = (i) => {
 
         a = a.sort((a, b) => Math.floor(Math.random() * 3) - 1);
 
-        let audio = new Audio(q.audio_question);
+        audio = new Audio(q.audio_question);
         audio.play();
 
-        let grid = 1;
+        /*
+            Falta el audio_section
+        */
+
+        let idimageQuestion = 1;
+        let idimage = 1;
 
         const htmlAnswerArray = a.map(currentA =>
-            opciones[opciones.length] = `<button id="answer" class="btn btn-primary" onClick="evaluateAnswer('${currentA}', this)"><img src="${currentA}"></img></button>`,
+            `<button id="answer${idimageQuestion++}" class="btn btn-primary" onClick="evaluateAnswer('${currentA}', this)"><img id="img${idimage++}" src="${currentA}"></img></button>`,
         );
 
-        opciones.forEach(() => {
-            const htmlAnswer = htmlAnswerArray.join(' ');
-            document.querySelector('#grid' + grid).innerHTML = htmlAnswer;
-            grid++;
-        })
-
-        //Quede haciendo esta funcion que me pone en ambos grid pero me pone las dos imagenes
+        const htmlAnswer = htmlAnswerArray.join(' ');
+        document.querySelector("#grid1").innerHTML = htmlAnswer;
 
         document.querySelector('#btnNext').disabled = true;
 
     } else {
         alert("Juego terminado");
         document.querySelector('#btnNext').remove();
+        window.location.href = "../../sections.html";
     }
 
 }
