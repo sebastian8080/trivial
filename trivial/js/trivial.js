@@ -12,6 +12,9 @@ let audio_section;
 //Variables para obtener la respuesta del button y la imagen
 let respuesta, objeto;
 
+//Variable para poner el titulo
+let titulo = "Los Animales";
+
         const cuestionary = [
             {
                 "audio_section" : "../../audio/audio_animales/Musica_fondo.mp3",
@@ -19,16 +22,16 @@ let respuesta, objeto;
                 "image_answer": ["../../img/imganimales/vaca_animada.png", "../../img/imganimales/caballo_animado.png"]
             },
             {
-                "audio_question": "../../audio/audio_animales/Que_animal_hace_asi.mp3",
-                "image_answer": ["../../img/imganimales/caballo_animado.png", "../../img/imganimales/vaca_animada.png"]
+                "audio_question": "../../audio/audio_animales/Cual_de_los_siguientes_animales_hace_este_sonido.mp3",
+                "image_answer": ["../../img/imganimales/buho_animado.png", "../../img/imganimales/aguila_animada.png"]   
             },
             {
                 "audio_question": "../../audio/audio_animales/Cual_de_estos_dos_animales_hace_el_siguiente_sonido.mp3",
-                "image_answer": ["../../img/imganimales/cerdo_animado.png", "../../img/imganimales/rinoceronte_animado.png"]
+                "image_answer": ["../../img/imganimales/cerdo_animado.png", "../../img/imganimales/vaca_animada.png"]
             },
             {
-                "audio_question": "../../audio/audio_animales/Cual_de_los_siguientes_animales_hace_este_sonido.mp3",
-                "image_answer": ["../../img/imganimales/buho_animado.png", "../../img/imganimales/aguila_animada.png"]
+                "audio_question": "../../audio/audio_animales/Que_animal_hace_asi.mp3",
+                "image_answer": ["../../img/imganimales/caballo_animado.png", "../../img/imganimales/rinoceronte_animado.png"]
             },
             {
                 "audio_question": "../../audio/audio_animales/Audio_ballena.mp3",
@@ -52,6 +55,8 @@ let respuesta, objeto;
             }
         ];
 
+        document.querySelector('#h1animales').innerHTML = titulo;
+
         function detectarBoton(event){
             if(event.button == 2){
                 respuesta = document.getElementById("img2").getAttribute("src");
@@ -67,7 +72,8 @@ let respuesta, objeto;
             //currentQuestionIndex++;
             let longitud_array = Object.keys(cuestionary).length;
 
-            if(currentQuestionIndex <= longitud_array){
+            if(currentQuestionIndex <= longitud_array - 1){
+                console.log("currenQuestionIndex: " + currentQuestionIndex + " longitud_array: " + longitud_array);
                 const q = cuestionary[i];
                 let a = q.image_answer;
                 rigthAnswer = a[0];
@@ -91,22 +97,28 @@ let respuesta, objeto;
                 document.querySelector('#grid1').innerHTML = htmlAnswer;
 
                 document.querySelector('#btnNext').disabled = true;
-            
+
             } else {
                 alert("Juego terminado");
                 document.querySelector('#btnNext').remove();
                 window.location.href = "../../sections.html";
                 audio_section.pause();
-        }
+            }
 
         }
 
         const evaluateAnswer = (answer, obj) => {
-
-            console.log(answer + " " + obj);
-            
-            document.querySelector('#grid1').classList.remove('rigth', 'wrong');
             const parentP = obj.parentNode;
+            /*
+                Al añadir este if ya me cambia de color 
+                al cambiar la pregunta, pero no le quita
+                la clase
+            */
+            if(parentP.classList.contains("rigth") || parentP.classList.contains("wrong")){
+                parentP.classList.remove('rigth', 'wrong');
+            }
+
+            console.log(parentP);
             if (answer == rigthAnswer) {
                 audio.pause();
                 parentP.classList.add('rigth');

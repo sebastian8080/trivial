@@ -1,9 +1,9 @@
 var x = document.getElementById('ventanaAyuda');
 
-function abrirAyuda(){
-    if (x.style.visibility === "hidden") {
-        x.style.visibility = "visible";
-    } else {
+const abrirAyuda = () => {
+    if (x.style.visibility == "visible") {
         x.style.visibility = "hidden";
+    } else {
+        x.style.visibility = "visible";
     }
 }
