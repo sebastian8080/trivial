@@ -15,6 +15,9 @@ let respuesta, objeto;
 //Variable para poner el titulo
 let titulo = "Los Animales";
 
+//Variable para regresar a la pagina anterior
+let bPreguntar = true;
+
         const cuestionary = [
             {
                 "audio_section" : "../../audio/audio_animales/Musica_fondo.mp3",
@@ -52,11 +55,22 @@ let titulo = "Los Animales";
             {
                 "audio_question": "../../audio/audio_animales/Audio_leon.mp3",
                 "image_answer": ["../../img/imganimales/leon_animado.png", "../../img/imganimales/oso_animado.png"]
+            },
+            {
+                "audio_question": "../../audio/audio_animales/Audio_gato.mp3",
+                "image_answer": ["../../img/imganimales/gato_animado2.png", "../../img/imganimales/raton_animado.png"]
             }
         ];
 
+        //Poniendo el titulo en la seccion
         document.querySelector('#h1animales').innerHTML = titulo;
 
+        //Funcion para regresar a la pagina anterior con confirmacion
+        window.onbeforeunload = function(){
+            return confirm("Seguro que quieres salir");
+        }
+
+        //Funcion para ver que boton del mouse presiona, segun eso se manda la respuesta
         function detectarBoton(event){
             if(event.button == 2){
                 respuesta = document.getElementById("img2").getAttribute("src");
@@ -68,6 +82,7 @@ let titulo = "Los Animales";
             evaluateAnswer(respuesta, objeto);
         }
 
+        //Imprime las preguntas segun vaya avanzando
         const printHTMLQuestion = (i) => {
             //currentQuestionIndex++;
             let longitud_array = Object.keys(cuestionary).length;
@@ -90,7 +105,7 @@ let titulo = "Los Animales";
                 let idimage = 1;
             
                 const htmlAnswerArray = a.map(currentA =>
-                   `<button id="answer${idimageQuestion++}" class="btn btn-primary" onClick="evaluateAnswer('${currentA}', this)"><img id="img${idimage++}" src="${currentA}"></img></button>`,   
+                   `<button id="answer${idimageQuestion++}" onClick="evaluateAnswer('${currentA}', this)"><img id="img${idimage++}" src="${currentA}"></img></button>`,   
                 );
 
                 const htmlAnswer = htmlAnswerArray.join(' ');    
@@ -99,7 +114,7 @@ let titulo = "Los Animales";
                 document.querySelector('#btnNext').disabled = true;
 
             } else {
-                alert("Juego terminado");
+                alert("Juego terminado " + "Respuestas Correctas: " + rigthAnswers + " Respuestas Incorrectas: " + wrongAnswers);
                 document.querySelector('#btnNext').remove();
                 window.location.href = "../../sections.html";
                 audio_section.pause();

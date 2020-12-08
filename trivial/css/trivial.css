@@ -28,10 +28,14 @@ img{
     padding-bottom: 15px;
 }
 
-#grid2{
-    padding-top: 20px;
+#answer1{
+    background-color: #3cc0cd;
+    border-radius: 15px;
+    margin-top: 30px;
 }
 
-#alertBien, #alertMal{
-    display: none;
+#answer2{
+    background-color: #d7ea7a;
+    border-radius: 15px;
+    margin-top: 30px;
 }

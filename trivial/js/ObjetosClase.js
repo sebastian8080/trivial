@@ -16,16 +16,17 @@ let titulo = "Objetos de la Clase"
 
 const cuestionary = [
     {
-        "audio_question": "../../audio/audio_animales/Audio_ballena.mp3",
+        "audio_section": "../../audio/audio_objetos_clase/musica_fondo.mp3",
+        "audio_question": "../../audio/audio_objetos_clase/boligrafo_borrador.mp3",
         "image_answer": ["../../img/imgobjetosclase/boligrafo.png", "../../img/imgobjetosclase/borrador.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_objetos_clase/carpeta_cartuchera.mp3",
         "image_answer": ["../../img/imgobjetosclase/carpeta.png", "../../img/imgobjetosclase/cartuchera.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgobjetosclase/corrector.png", "../../img/imgobjetosclase/cuaderno.png"]
+        "audio_question": "../../audio/audio_objetos_clase/cuaderno_corrector.mp3",
+        "image_answer": ["../../img/imgobjetosclase/cuaderno.png", "../../img/imgobjetosclase/corrector.png"]
     },
     {
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
@@ -53,7 +54,7 @@ const cuestionary = [
     }
 ];
 
-document.querySelector(".jumbotron").innerHTML = titulo;
+document.querySelector("#h1objetosclase").innerHTML = titulo;
 
 function detectarBoton(event){
     if(event.button == 2){
@@ -80,9 +81,8 @@ const printHTMLQuestion = (i) => {
         audio = new Audio(q.audio_question);
         audio.play();
 
-        /*
-            Aqui faltaria el audio para el fondo
-        */
+        audio_section = new Audio(q.audio_section);
+        audio_section.play();
 
         let idimageQuestion = 1;
         let idimage = 1;
@@ -97,6 +97,7 @@ const printHTMLQuestion = (i) => {
         document.querySelector("#btnNext").disabled = true;
     } else {
         alert("Juego terminado");
+        audio_section.pause();
         document.querySelector('#btnNext').remove();
         window.location.href = "../../sections.html";
     }

@@ -7,3 +7,4 @@ const abrirAyuda = () => {
         x.style.visibility = "visible";
     }
 }
+
