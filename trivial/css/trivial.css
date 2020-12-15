@@ -17,6 +17,7 @@ img{
 
 .container{
     display: none;
+    position: relative;
 }
 
 .botonIniciar{
@@ -38,4 +39,21 @@ img{
     background-color: #d7ea7a;
     border-radius: 15px;
     margin-top: 30px;
+}
+
+.alert{
+    position: absolute;
+    position: absolute;
+    top:50%;
+    left: 50%;           
+    margin-top: -100px;
+    margin-left: -100px;
+    display: none;
+}
+
+#imgQuestion{
+    display: none;
+    height: 150px;
+    width: 150px;
+    margin: auto;
 }

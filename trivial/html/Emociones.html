@@ -11,12 +11,12 @@
 </head>
 <body>
 
-    <div class="jumbotron">
-        EDUIPCA
+    <div class="jumbotron bg-info">
+        <h1 id="h1emociones" class="display-4"></h1>
     </div>
 
     <div class="botonIniciar">
-        <button id="btnIniciar" class="btn btn-primary" onClick="iniciarTest()">Iniciar Test</button>
+        <button id="btnIniciar" class="btn btn-primary" onClick="iniciarTest()">Comenzar a aprender</button>
     </div>
 
     <div class="container" onmousedown="detectarBoton(event);">
@@ -32,7 +32,6 @@
                 <p>Respuestas Incorrectas: <span class="wrongCounter">0</span></p>
             </div>
         </div>
-    </div>
         <button id="btnNext" class="btn btn-primary btn-block" onclick="printHTMLQuestion(currentQuestionIndex)">Siguiente</button>
     </div>
     

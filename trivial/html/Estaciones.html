@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/trivial.css">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    <!--LINK DE CSS DE ESTE ARCHIVP-->
+    <link rel="stylesheet" href="../css/trivial.css">
 </head>
 <body>
 
     <div class="jumbotron bg-info">
-        <h1 id="h1cuerpohumano" class="display-4"></h1>
+        <h1 id="h1estaciones" class="display-4"></h1>     
     </div>
 
     <div class="botonIniciar">
@@ -20,10 +20,14 @@
     </div>
 
     <div class="container" onmousedown="detectarBoton(event);">
-        
+        <div class="row">
+            <div class="col-sm-12">
+                <img id="imgQuestion" src="" alt="">
+            </div>
+        </div>
         <div class="row">
             <div id="grid1" class="col-sm-12">
-
+                
             </div>
         </div>
         <div class="row">
@@ -34,8 +38,22 @@
         </div>
         <button id="btnNext" class="btn btn-primary btn-block" onclick="printHTMLQuestion(currentQuestionIndex)">Siguiente</button>
     </div>
-    
-    <script src="../js/CuerpoHumano.js"></script>
 
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <h3>Intentos</h3>
+        <p id="parrafoIntentos"></p>
+        <h3>Correctas</h3>
+        <p id="parrafoCorrectas"></p>
+        <h3>Incorrectas</h3>
+        <p id="parrafoIncorrectas"></p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+    <script src="../js/Estaciones.js"></script>
+    <script>
+        
+    </script>
 </body>
 </html>

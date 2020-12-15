@@ -20,7 +20,11 @@
     </div>
 
     <div class="container" onmousedown="detectarBoton(event);">
-        
+        <div class="row">
+            <div class="col-sm-12">
+                <img id="imgQuestion" src="" alt="">
+            </div>
+        </div>
         <div class="row">
             <div id="grid1" class="col-sm-12">
                 
@@ -33,6 +37,18 @@
             </div>
         </div>
         <button id="btnNext" class="btn btn-primary btn-block" onclick="printHTMLQuestion(currentQuestionIndex)">Siguiente</button>
+    </div>
+
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <h3>Intentos</h3>
+        <p id="parrafoIntentos"></p>
+        <h3>Correctas</h3>
+        <p id="parrafoCorrectas"></p>
+        <h3>Incorrectas</h3>
+        <p id="parrafoIncorrectas"></p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
     
     <script src="../js/trivial.js"></script>

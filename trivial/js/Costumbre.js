@@ -12,10 +12,13 @@ let audio_section;
 //Variables para obtener la respuesta y el objeto button
 let respuesta, objeto;
 
+//Variable para poner el titulo
+let titulo = "Costumbres del Ecuador";
+
 const cuestionary = [
     {
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imganimales/vaca_animada.png", "../../img/imganimales/caballo_animado.png"]
+        "image_answer": ["../../img/imgcostumbres/24.png", "../../img/imgcostumbres/28.png"]
     },
     {
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
@@ -51,6 +54,8 @@ const cuestionary = [
     }
 ];
 
+document.querySelector('#h1costumbres').innerHTML = titulo;
+
 function detectarBoton(event){
     if(event.button == 2){
         respuesta = document.getElementById("img2").getAttribute("src");
@@ -66,7 +71,7 @@ const printHTMLQuestion = (i) => {
     //currentQuestionIndex++;
     let longitud_array = Object.keys(cuestionary).length;
 
-    if (currentQuestionIndex <= longitud_array) {
+    if (currentQuestionIndex <= longitud_array - 1) {
         const q = cuestionary[i];
         let a = q.image_answer;
         rigthAnswer = a[0];
@@ -101,8 +106,10 @@ const printHTMLQuestion = (i) => {
 }
 
 const evaluateAnswer = (answer, obj) => {
-    document.querySelectorAll('#answer').forEach(a => a.classList.remove('rigth', 'wrong'));
     const parentP = obj.parentNode;
+    if(parentP.classList.contains("rigth") || parentP.classList.contains("wrong")){
+        parentP.classList.remove('rigth', 'wrong');
+    }
     if (answer == rigthAnswer) {
         parentP.classList.add('rigth');
         rigthAnswers++;

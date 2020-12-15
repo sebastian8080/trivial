@@ -12,6 +12,9 @@ let audio_section;
 //Variables para obtener la respuesta y el objeto buttons
 let respuesta, objeto;
 
+//Variable para poner titulo
+let titulo = "Las Emociones";
+
         const cuestionary = [
             {
                 "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
@@ -50,6 +53,7 @@ let respuesta, objeto;
                 "image_answer": ["../../img/imgemociones/leon_animado.png", "../../img/imgemociones/oso_animado.png"]
             }
         ];
+        document.querySelector('#h1emociones').innerHTML = titulo;
 
         function detectarBoton(event){
             if(event.button == 2){
@@ -84,7 +88,7 @@ let respuesta, objeto;
                 let idimage = 1;
 
                 const htmlAnswerArray = a.map(currentA =>
-                   `<button id="answer${idimageQuestion++}" class="btn btn-primary" onClick="evaluateAnswer('${currentA}', this)"><img id="img${idimage++}" src="${currentA}"></img></button>`,   
+                   `<button id="answer${idimageQuestion++}"><img id="img${idimage++}" src="${currentA}"></img></button>`,   
                 );
 
                 const htmlAnswer = htmlAnswerArray.join(' ');

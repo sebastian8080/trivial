@@ -13,56 +13,64 @@ let audio_section;
 let respuesta, objeto;
 
 //Variable para poner el titulo
-let titulo = "Los Animales";
+let titulo = "Las Estaciones";
 
 //Variable para la imageQuestion
 let imageQuestion;
+
         const cuestionary = [
             {
                 "audio_section" : "../../audio/audio_animales/Musica_fondo.mp3",
-                "audio_question": "../../audio/audio_animales/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-                "image_answer": ["../../img/imganimales/vaca_animada.png", "../../img/imganimales/caballo_animado.png"]
+                "audio_question": "../../audio/audio_estaciones/que_epoca_hace_mas_frio.mp3",
+                "image_answer": ["../../img/imgestaciones/invierno2.jpg", "../../img/imgestaciones/verano.jpg"]
             },
             {
-                "audio_question": "../../audio/audio_animales/Cual_de_los_siguientes_animales_hace_este_sonido.mp3",
-                "image_answer": ["../../img/imganimales/buho_animado.png", "../../img/imganimales/aguila_animada.png"]   
+                "audio_question": "../../audio/audio_estaciones/osos_hibernan.mp3",
+                "image_answer": ["../../img/imgestaciones/invierno2.png", "../../img/imgestaciones/primavera2.png"]   
             },
             {
-                "audio_question": "../../audio/audio_animales/Cual_de_estos_dos_animales_hace_el_siguiente_sonido.mp3",
-                "image_answer": ["../../img/imganimales/cerdo_animado.png", "../../img/imganimales/vaca_animada.png"]
+                "image_question": "../../img/imgestaciones/castillo_de_arena.png",
+                "audio_question": "../../audio/audio_estaciones/jugar_castillo_arena.mp3",
+                "image_answer": ["../../img/imgestaciones/playa_verano2.png", "../../img/imgestaciones/invierno.png"]
             },
             {
-                "audio_question": "../../audio/audio_animales/Que_animal_hace_asi.mp3",
-                "image_answer": ["../../img/imganimales/caballo_animado.png", "../../img/imganimales/rinoceronte_animado.png"]
+                "image_question" : "../../img/imgestaciones/muñeco_de_nieve.png",
+                "audio_question": "../../audio/audio_estaciones/muñeco_nieve.mp3",
+                "image_answer": ["../../img/imgestaciones/invierno3.png", "../../img/imgestaciones/otoño2.jpg"]
             },
             {
-                "audio_question": "../../audio/audio_animales/Audio_ballena.mp3",
-                "image_answer": ["../../img/imganimales/ballena_animada.png", "../../img/imganimales/delfin_animado.png"]
+                "image_question" : "../../img/imgestaciones/hoja_otoño.png",
+                "audio_question": "../../audio/audio_estaciones/hojas_caen_de_arbol.mp3",
+                "image_answer": ["../../img/imgestaciones/otoño.jpg", "../../img/imgestaciones/primavera.jpg"]
             },
             {
-                "audio_question": "../../audio/audio_animales/Audio_elefante.mp3",
-                "image_answer": ["../../img/imganimales/elefante_animado.png", "../../img/imganimales/jirafa_animada.png"]
+                "image_question": "../../img/imgestaciones/cometa.png",
+                "audio_question": "../../audio/audio_estaciones/volar_cometa.mp3",
+                "image_answer": ["../../img/imgestaciones/verano.jpg", "../../img/imgestaciones/invierno2.jpg"]
             },
             {
+                "image_question": "../../img/imgestaciones/flor_primavera.png",
                 "audio_question": "../../audio/audio_animales/Audio_pato.mp3",
-                "image_answer": ["../../img/imganimales/pato_animado.png", "../../img/imganimales/gallina_animada.png"]
+                "image_answer": ["../../img/imgestaciones/primavera.jpg", "../../img/imgestaciones/otoño.jpg"]
             },
             {
+                "image_question": "../../img/imgestaciones/niños_jugando_otoño.png",
                 "audio_question": "../../audio/audio_animales/Audio_perro.mp3",
-                "image_answer": ["../../img/imganimales/perro_animado.png", "../../img/imganimales/gato_animado.png"]
+                "image_answer": ["../../img/imgestaciones/otoño3.jpg", "../../img/imgestaciones/primavera2.jpg"]
             },
             {
                 "audio_question": "../../audio/audio_animales/Audio_leon.mp3",
-                "image_answer": ["../../img/imganimales/leon_animado.png", "../../img/imganimales/oso_animado.png"]
+                "image_answer": ["../../img/imgestaciones/verano2.jpg", "../../img/imgestaciones/invierno.jpg"]
             },
             {
+                "image_question":"../../img/imgestaciones/niña_arropada.png",
                 "audio_question": "../../audio/audio_animales/Audio_gato.mp3",
-                "image_answer": ["../../img/imganimales/gato_animado2.png", "../../img/imganimales/raton_animado.png"]
+                "image_answer": ["../../img/imgestaciones/invierno4.png", "../../img/imgestaciones/verano3.png"]
             }
         ];
 
         //Poniendo el titulo en la seccion
-        document.querySelector('#h1animales').innerHTML = titulo;
+        document.querySelector('#h1estaciones').innerHTML = titulo;
 
         //Funcion para ver que boton del mouse presiona, segun eso se manda la respuesta
         function detectarBoton(event){
@@ -92,8 +100,10 @@ let imageQuestion;
                 if(imageQuestion != null){
                     document.querySelector('#imgQuestion').setAttribute("src", imageQuestion);
                     document.querySelector('#imgQuestion').style.display = 'block';
+                    document.querySelector('.jumbotron').style.display = 'none';
                 } else {
                     document.querySelector('#imgQuestion').style.display = 'none';
+                    document.querySelector('.jumbotron').style.display = 'block';
                 }
 
                 a = a.sort((a, b) => Math.floor(Math.random() * 3) -1);

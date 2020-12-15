@@ -30,7 +30,7 @@ const cuestionary = [
     },
     {
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgobjetosclase/grapadora.png", "../../img/imgobjetosclase/lapiz.png"]
+        "image_answer": ["../../img/imgobjetosclase/sacapuntas.png", "../../img/imgobjetosclase/grapadora.png"]
     },
     {
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
@@ -46,11 +46,15 @@ const cuestionary = [
     },
     {
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgobjetosclase/borrador.png", "../../img/imgobjetosclase/grapadora.png"]
+        "image_answer": ["../../img/imgobjetosclase/borrador.png", "../../img/imgobjetosclase/lapiz.png"]
     },
     {
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
         "image_answer": ["../../img/imgobjetosclase/tijera.png", "../../img/imgobjetosclase/pega.png"]
+    },
+    {
+        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "image_answer": ["../../img/imgobjetosclase/pupitre.png", "../../img/imgobjetosclase/basurero.png"]
     }
 ];
 

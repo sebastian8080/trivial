@@ -11,6 +11,9 @@ let audio, audio_section;
 //Variables para obtener la respuesta y el objeto button
 let respuesta, objeto;
 
+//Variable para el titulo
+let titulo = "El Cuerpo Humano";
+
 const cuestionary = [
     {
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
@@ -22,7 +25,7 @@ const cuestionary = [
     },
     {
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/intestino.png", "../../img/imgcuerpohumano/mano.png"]
+        "image_answer": ["../../img/imgcuerpohumano/mano.png", "../../img/imgcuerpohumano/intestino.png"]
     },
     {
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
@@ -50,14 +53,17 @@ const cuestionary = [
     }
 ];
 
+document.querySelector("#h1cuerpohumano").innerHTML = titulo;
+
 function detectarBoton(event){
     if(event.button == 2){
         respuesta = document.getElementById("img2").getAttribute("src");
         document.oncontextmenu = document.body.oncontextmenu = function(){return false};
     }else if(event.button == 0){
-        respuesta = document.getElementsById("img1").getAttribute("src");
+        respuesta = document.getElementById("img1").getAttribute("src");
     }
-    objeto = document.getElementsById("grid1");
+    objeto = document.getElementById("grid1");
+    console.log(respuesta + " " + objeto);
     evaluateAnswer(respuesta, objeto);
 }
 
@@ -65,7 +71,7 @@ const printHTMLQuestion = (i) => {
     //currentQuestionIndex++;
     let longitud_array = Object.keys(cuestionary).length;
 
-    if (currentQuestionIndex <= longitud_array) {
+    if (currentQuestionIndex <= longitud_array - 1) {
         const q = cuestionary[i];
         let a = q.image_answer;
         rigthAnswer = a[0];
@@ -83,7 +89,7 @@ const printHTMLQuestion = (i) => {
         let idimage = 1;
 
         const htmlAnswerArray = a.map(currentA =>
-            `<button id="answer${idimageQuestion++}" class="btn btn-primary" onClick="evaluateAnswer('${currentA}', this)"><img id="img${idimage++}" src="${currentA}"></img></button>`,
+            `<button id="answer${idimageQuestion++}"><img id="img${idimage++}" src="${currentA}"></img></button>`,
         );
 
         const htmlAnswer = htmlAnswerArray.join(' ');
@@ -100,8 +106,10 @@ const printHTMLQuestion = (i) => {
 }
 
 const evaluateAnswer = (answer, obj) => {
-    document.querySelectorAll('#answer').forEach(a => a.classList.remove('rigth', 'wrong'));
     const parentP = obj.parentNode;
+    if(parentP.classList.contains("rigth") || parentP.classList.contains("wrong")){
+        parentP.classList.remove('rigth', 'wrong');
+    }
     if (answer == rigthAnswer) {
         parentP.classList.add('rigth');
         rigthAnswers++;
