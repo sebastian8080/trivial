@@ -14,46 +14,54 @@ let respuesta, objeto;
 
 let titulo = "Los Colores";
 
+//Variable para la image_question
+let imageQuestion;
+
 const cuestionary = [
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_section": "../../audio/audio_colores/musica_fondo.mp3",
+        "audio_question": "../../audio/audio_colores/rojo.mp3",
         "image_answer": ["../../img/imgcolores/auto_rojo.png", "../../img/imgcolores/auto_negro.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_colores/azul.mp3",
         "image_answer": ["../../img/imgcolores/flor_azul.png", "../../img/imgcolores/flor_rosa.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_colores/verde.mp3",
         "image_answer": ["../../img/imgcolores/pera_verde.png", "../../img/imgcolores/naranja.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_colores/cafe.mp3",
         "image_answer": ["../../img/imgcolores/ardilla_cafe.png", "../../img/imgcolores/pez_morado.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_colores/amarillo.mp3",
         "image_answer": ["../../img/imgcolores/sol.png", "../../img/imgcolores/luna_blanca.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcolores/pelota_naranja.png", "../../img/imgcolores/pelota_morada.png"]
+        "image_question": "../../img/imgcolores/pelota_naranja.png",
+        "audio_question": "../../audio/audio_colores/pelota_naranja.mp3",
+        "image_answer": ["../../img/imgcolores/color_naranja.png", "../../img/imgcolores/color_morado.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcolores/blusa_celeste.png", "../../img/imgcolores/blusa_verde.png"]
+        "image_question": "../../img/imgcolores/blusa_celeste.png",
+        "audio_question": "../../audio/audio_colores/blusa_celeste.mp3",
+        "image_answer": ["../../img/imgcolores/color_celeste.jpg", "../../img/imgcolores/color_verde_claro.jpg"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_colores/blanco_negro.mp3",
         "image_answer": ["../../img/imgcolores/cebra_blanco_negro.png", "../../img/imgcolores/jaguar_naranja.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcolores/durazno_naranja.png", "../../img/imgcolores/uva_morada.png"]
+        "image_question": "../../img/imgcolores/uva_morada.png",
+        "audio_question": "../../audio/audio_colores/fruta_morada.mp3",
+        "image_answer": ["../../img/imgcolores/colormorado.png", "../../img/imgcolores/color_lacre.jpg"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcolores/flamengo_rosado.png", "../../img/imgcolores/mono_cafe.png"]
+        "image_question": "../../img/imgcolores/flamengo_rosado.png",
+        "audio_question": "../../audio/audio_colores/animal_rosado.mp3",
+        "image_answer": ["../../img/imgcolores/color_rosado.jpg", "../../img/imgcolores/color_crema.jpg"]
     }
 ];
 
@@ -63,11 +71,11 @@ document.querySelector('#h1colores').innerHTML = titulo;
 //     return confirm("Seguro que quieres salir");
 // }
 
-function detectarBoton(event){
-    if(event.button == 2){
+function detectarBoton(event) {
+    if (event.button == 2) {
         respuesta = document.getElementById("img2").getAttribute("src");
-        document.oncontextmenu = document.body.oncontextmenu = function(){return false};
-    } else if(event.button == 0){
+        document.oncontextmenu = document.body.oncontextmenu = function () { return false };
+    } else if (event.button == 0) {
         respuesta = document.getElementById("img1").getAttribute("src");
     }
     objeto = document.getElementById("grid1");
@@ -81,7 +89,17 @@ const printHTMLQuestion = (i) => {
     if (currentQuestionIndex <= longitud_array - 1) {
         const q = cuestionary[i];
         let a = q.image_answer;
+        imageQuestion = q.image_question;
         rigthAnswer = a[0];
+
+        if (imageQuestion != null) {
+            document.querySelector('#imgQuestion').setAttribute('src', imageQuestion);
+            document.querySelector('#imgQuestion').style.display = 'block';
+            document.querySelector('.jumbotron').style.display = 'none';
+        } else {
+            document.querySelector('#imgQuestion').style.display = 'none';
+            document.querySelector('.jumbotron').style.display = 'block';
+        }
 
         a = a.sort((a, b) => Math.floor(Math.random() * 3) - 1);
 
@@ -89,7 +107,7 @@ const printHTMLQuestion = (i) => {
         audio.play();
 
         audio_section = new Audio(q.audio_section);
-
+        audio_section.play();
         //Variable para ponerle un id al boton de la respuesta
         let idimageQuestion = 1;
         let idimage = 1;
@@ -103,10 +121,14 @@ const printHTMLQuestion = (i) => {
         document.querySelector('#btnNext').disabled = true;
 
     } else {
-        let intentos = rigthAnswers + wrongAnswers;
-        alert("Juego terminado" + "Intentos: " + intentos + " Correctas: " + rigthAnswers + " Incorrectas: " + wrongAnswers);
+        document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
+        document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
+        document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;
+        document.querySelector('.alert').style.display = 'block';
         document.querySelector('#btnNext').remove();
-        window.location.href = "../../sections.html";
+        setTimeout(function () {
+            window.location.href = "../../sections.html";
+        }, 5000);
         audio_section.pause();
     }
 
@@ -115,10 +137,11 @@ const printHTMLQuestion = (i) => {
 const evaluateAnswer = (answer, obj) => {
     //document.querySelectorAll('#grid1').forEach(a => a.classList.remove('rigth', 'wrong'));
     const parentP = obj.parentNode;
-    if(parentP.classList.contains('rigth') || parentP.classList.contains('wrong')){
+    if (parentP.classList.contains('rigth') || parentP.classList.contains('wrong')) {
         parentP.classList.remove('rigth', 'wrong');
     }
     if (answer == rigthAnswer) {
+        audio.pause();
         parentP.classList.add('rigth');
         rigthAnswers++;
         document.querySelector('.rigthCounter').innerHTML = rigthAnswers;
@@ -139,6 +162,6 @@ const iniciarTest = _ => {
     document.querySelector('#btnNext').style.display = 'none';
 }
 
-function mandarMensaje(){
+function mandarMensaje() {
     alert("Juego terminado");
 }

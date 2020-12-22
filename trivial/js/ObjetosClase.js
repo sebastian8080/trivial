@@ -29,32 +29,32 @@ const cuestionary = [
         "image_answer": ["../../img/imgobjetosclase/cuaderno.png", "../../img/imgobjetosclase/corrector.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_objetos_clase/sacapuntas_grapadora.mp3",
         "image_answer": ["../../img/imgobjetosclase/sacapuntas.png", "../../img/imgobjetosclase/grapadora.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_objetos_clase/mochila_goma.mp3",
         "image_answer": ["../../img/imgobjetosclase/mochila.png", "../../img/imgobjetosclase/pega.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_objetos_clase/pizarron_pupitre.mp3",
         "image_answer": ["../../img/imgobjetosclase/pizarron.png", "../../img/imgobjetosclase/pupitre.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_objetos_clase/regla_tijera.mp3",
         "image_answer": ["../../img/imgobjetosclase/regla.png", "../../img/imgobjetosclase/tijera.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_objetos_clase/borrador_lapiz.mp3",
         "image_answer": ["../../img/imgobjetosclase/borrador.png", "../../img/imgobjetosclase/lapiz.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_objetos_clase/tijera_pega.mp3",
         "image_answer": ["../../img/imgobjetosclase/tijera.png", "../../img/imgobjetosclase/pega.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgobjetosclase/pupitre.png", "../../img/imgobjetosclase/basurero.png"]
+        "audio_question": "../../audio/audio_objetos_clase/basurero_pupitre.mp3",
+        "image_answer": ["../../img/imgobjetosclase/basurero.png", "../../img/imgobjetosclase/pupitre.png"]
     }
 ];
 
@@ -75,7 +75,7 @@ const printHTMLQuestion = (i) => {
     //currentQuestionIndex++;
     let longitud_array = Object.keys(cuestionary).length;
 
-    if (currentQuestionIndex <= longitud_array) {
+    if (currentQuestionIndex <= longitud_array - 1) {
         const q = cuestionary[i];
         let a = q.image_answer;
         rigthAnswer = a[0];
@@ -100,10 +100,15 @@ const printHTMLQuestion = (i) => {
         
         document.querySelector("#btnNext").disabled = true;
     } else {
-        alert("Juego terminado");
         audio_section.pause();
+        document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
+        document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
+        document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;
+        document.querySelector('.alert').style.display = 'block';
         document.querySelector('#btnNext').remove();
-        window.location.href = "../../sections.html";
+        setTimeout(function(){
+            window.location.href = "../../sections.html";
+        }, 5000);
     }
 
 }

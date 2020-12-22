@@ -21,6 +21,11 @@
 
     <div class="container" onmousedown="detectarBoton(event);">
         <div class="row">
+            <div class="col-sm-12">
+                <img id="imgQuestion" src="" alt="">
+            </div>
+        </div>
+        <div class="row">
             <div id="grid1" class="col-sm-12">
 
             </div>
@@ -32,6 +37,16 @@
             </div>
         </div>
         <button id="btnNext" class="btn btn-primary btn-block" onclick="printHTMLQuestion(currentQuestionIndex)">Siguiente</button>
+    </div>
+
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <h2>RESULTADOS</h2>    
+        <h3>Intentos</h3>
+        <p id="parrafoIntentos"></p>
+        <h3>Correctas</h3>
+        <p id="parrafoCorrectas"></p>
+        <h3>Incorrectas</h3>
+        <p id="parrafoIncorrectas"></p>
     </div>
     
     <script src="../js/Colores.js"></script>

@@ -55,11 +55,11 @@ const cuestionary = [
 
 document.querySelector("#h1cuerpohumano").innerHTML = titulo;
 
-function detectarBoton(event){
-    if(event.button == 2){
+function detectarBoton(event) {
+    if (event.button == 2) {
         respuesta = document.getElementById("img2").getAttribute("src");
-        document.oncontextmenu = document.body.oncontextmenu = function(){return false};
-    }else if(event.button == 0){
+        document.oncontextmenu = document.body.oncontextmenu = function () { return false };
+    } else if (event.button == 0) {
         respuesta = document.getElementById("img1").getAttribute("src");
     }
     objeto = document.getElementById("grid1");
@@ -98,16 +98,22 @@ const printHTMLQuestion = (i) => {
         document.querySelector('#btnNext').disabled = true;
 
     } else {
-        alert("Juego terminado");
+        audio_section.pause();
+        document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
+        document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
+        document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;
+        document.querySelector('.alert').style.display = 'block';
         document.querySelector('#btnNext').remove();
-        window.location.href = "../../sections.html";
+        setTimeout(function () {
+            window.location.href = "../../sections.html";
+        }, 5000);
     }
 
 }
 
 const evaluateAnswer = (answer, obj) => {
     const parentP = obj.parentNode;
-    if(parentP.classList.contains("rigth") || parentP.classList.contains("wrong")){
+    if (parentP.classList.contains("rigth") || parentP.classList.contains("wrong")) {
         parentP.classList.remove('rigth', 'wrong');
     }
     if (answer == rigthAnswer) {

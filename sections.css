@@ -77,3 +77,11 @@ button{
     height: 85%;
     width: 85%;
 }
+
+.alert{
+    position: absolute;
+    top: 10%;
+    left: 20%; 
+    right: 20%;
+    visibility: hidden;
+}

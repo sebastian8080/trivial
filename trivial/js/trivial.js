@@ -117,7 +117,7 @@ let imageQuestion;
                 document.querySelector('#btnNext').disabled = true;
 
             } else {
-                //alert("Juego terminado " + "Respuestas Correctas: " + rigthAnswers + " Respuestas Incorrectas: " + wrongAnswers);
+                audio_section.pause();
                 document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
                 document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
                 document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;
@@ -125,10 +125,8 @@ let imageQuestion;
                 document.querySelector('#btnNext').remove();
                 setTimeout(function(){
                     window.location.href = "../../sections.html";
-                }, 5000);
-                audio_section.pause();
+                }, 5000);   
             }
-
         }
 
         const evaluateAnswer = (answer, obj) => {

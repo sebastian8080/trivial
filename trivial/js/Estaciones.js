@@ -20,7 +20,7 @@ let imageQuestion;
 
         const cuestionary = [
             {
-                "audio_section" : "../../audio/audio_animales/Musica_fondo.mp3",
+                "audio_section" : "../../audio/audio_estaciones/musica_fondo.mp3",
                 "audio_question": "../../audio/audio_estaciones/que_epoca_hace_mas_frio.mp3",
                 "image_answer": ["../../img/imgestaciones/invierno2.jpg", "../../img/imgestaciones/verano.jpg"]
             },
@@ -127,7 +127,7 @@ let imageQuestion;
                 document.querySelector('#btnNext').disabled = true;
 
             } else {
-                //alert("Juego terminado " + "Respuestas Correctas: " + rigthAnswers + " Respuestas Incorrectas: " + wrongAnswers);
+                audio_section.pause();
                 document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
                 document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
                 document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;
@@ -135,8 +135,7 @@ let imageQuestion;
                 document.querySelector('#btnNext').remove();
                 setTimeout(function(){
                     window.location.href = "../../sections.html";
-                }, 5000);
-                audio_section.pause();
+                }, 5000);  
             }
 
         }
