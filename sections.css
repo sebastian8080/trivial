@@ -51,33 +51,6 @@ button{
     height: 80px;
 }
 
-.emergente{
-    width:1000px;
-    height:600px;
-    position:fixed;
-    background-color:#FFFAFA;
-    top:50%;
-    left:50%;
-    margin-left:-500px;
-    margin-top:-300px;
-    border:1px solid #000;
-    border-radius:10px;
-    padding:20px;
-    text-align:center;
-    box-shadow: 10px 10px 10px #ccc;
-    visibility: hidden;
-}
-
-.emergente p{
-    font-size: 24px;
-    text-align: left;
-}
-
-.emergente img{
-    height: 85%;
-    width: 85%;
-}
-
 .alert{
     position: absolute;
     top: 10%;
