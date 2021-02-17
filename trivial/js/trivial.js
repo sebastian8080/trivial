@@ -68,7 +68,7 @@ let imageQuestion;
         function detectarBoton(event){
             if(event.button == 2){
                 respuesta = document.getElementById("img2").getAttribute("src");
-                document.oncontextmenu = document.body.oncontextmenu = function(){ return false};
+                document.oncontextmenu = document.body.oncontextmenu = function(){ return false };
             } else if (event.button == 0){
                 respuesta = document.getElementById("img1").getAttribute("src");
             }
