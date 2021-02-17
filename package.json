@@ -1,0 +1,26 @@
+{
+  "name": "eduipca",
+  "version": "1.0.0",
+  "description": "This is a educative web page",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebastian8080/trivial.git"
+  },
+  "author": "Sebastian Armijos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sebastian8080/trivial/issues"
+  },
+  "homepage": "https://github.com/sebastian8080/trivial#readme"
+}

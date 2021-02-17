@@ -1,4 +1,5 @@
-var x = document.getElementById('alertAyuda');;
+//FUNCION PARA HACER VISIBLE EL CUADRO DE AYUDA
+var x = document.getElementById('alertAyuda');
 
 const abrirAyuda = () => {
     if (x.style.visibility == "visible") {
@@ -7,6 +8,7 @@ const abrirAyuda = () => {
         x.style.visibility = "visible";
     }
 }
+//---------------------------------
 
 const secciones = [
     {
