@@ -163,7 +163,7 @@ let arrayNumerosGenerados = [];
 
         const iniciarTest = _ => {
             let numeroGenerado = generarNumeroAleatorio();
-            console.log("Primer numero generado -> ", numeroGenerado);
+            console.log("Primer numero generado -> " + numeroGenerado);
             printHTMLQuestion(currentQuestionIndex);
             document.querySelector('#btnIniciar').style.display = 'none';
             document.querySelector('.container').style.display = 'block';
@@ -176,11 +176,12 @@ let arrayNumerosGenerados = [];
             let numeroComprobado;
             arrayNumerosGenerados.forEach(numero => {
                 if(numero != numeroGenerado){
-                    numeroGenerado = numeroComprobado;
+                     numeroComprobado = numeroComprobado;
                 } else {
                     arrayNumerosGenerados.push(numeroGenerado);
                     generarNumeroAleatorio();
                 }
             });
-            return numeroComprobado;
+            console.log(numeroComprobado);
+            return numeroComprobado;    
         }
