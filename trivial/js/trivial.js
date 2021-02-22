@@ -173,12 +173,14 @@ let arrayNumerosGenerados = [];
         function generarNumeroAleatorio(){
             let numeroGenerado = Math.floor(Math.random() * cuestionary.length);
             console.log(numeroGenerado);
+            let numeroComprobado;
             arrayNumerosGenerados.forEach(numero => {
                 if(numero != numeroGenerado){
-                    return 'hola';
+                    numeroGenerado = numeroComprobado;
                 } else {
                     arrayNumerosGenerados.push(numeroGenerado);
                     generarNumeroAleatorio();
                 }
             });
+            return numeroComprobado;
         }
