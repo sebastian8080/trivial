@@ -17,6 +17,9 @@ let titulo = "Los Animales";
 
 //Variable para la imageQuestion
 let imageQuestion;
+
+//Array para ir agregando los numeros que ya salen
+let arrayNumerosGenerados = [];
         const cuestionary = [
             {
                 "audio_section" : "../../audio/audio_animales/Musica_fondo.mp3",
@@ -68,7 +71,7 @@ let imageQuestion;
         function detectarBoton(event){
             if(event.button == 2){
                 respuesta = document.getElementById("img2").getAttribute("src");
-                document.oncontextmenu = document.body.oncontextmenu = function(){ return false };
+                document.oncontextmenu = document.body.oncontextmenu = function(){ return false }; //No permite que se abra el menu al presionar click derecho
             } else if (event.button == 0){
                 respuesta = document.getElementById("img1").getAttribute("src");
             }
@@ -147,6 +150,8 @@ let imageQuestion;
                 rigthAnswers++;
                 document.querySelector('.rigthCounter').innerHTML = rigthAnswers;
                 document.querySelector('#btnNext').disabled = false;
+                let numeroGenerado = generarNumeroAleatorio();
+                console.log('Siguiente numero generado -> ', numeroGenerado);
                 currentQuestionIndex++;
                 printHTMLQuestion(currentQuestionIndex);
             } else {
@@ -157,12 +162,22 @@ let imageQuestion;
         }
 
         const iniciarTest = _ => {
-            var lista = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-            lista = lista.sort(function() {return Math.random() - 0.5});
-            console.log(lista);
+            let numeroGenerado = generarNumeroAleatorio();
+            console.log("Primer numero generado -> ", numeroGenerado);
             printHTMLQuestion(currentQuestionIndex);
             document.querySelector('#btnIniciar').style.display = 'none';
             document.querySelector('.container').style.display = 'block';
             document.querySelector('#btnNext').style.display = 'none';
         }
         
+        function generarNumeroAleatorio(){
+            let numeroGenerado = Math.floor(Math.random() * (cuestionary.length - 0)) + 0;
+            arrayNumerosGenerados.forEach(numero => {
+                if(numero != numeroGenerado){
+                    return numeroGenerado;
+                } else {
+                    arrayNumerosGenerados.push(numeroGenerado);
+                    generarNumeroAleatorio();
+                }
+            });
+        }
