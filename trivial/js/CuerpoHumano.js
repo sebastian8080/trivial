@@ -16,40 +16,41 @@ let titulo = "El Cuerpo Humano";
 
 const cuestionary = [
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/boca.png", "../../img/imgcuerpohumano/cerebro.png"]
+        "audio_section": "../../audio/audio_cuerpo_humano/Fondo.mp3",
+        "audio_question": "../../audio/audio_cuerpo_humano/Cerebro.mp3",
+        "image_answer": ["../../img/imgcuerpohumano/cerebro.png", "../../img/imgcuerpohumano/boca.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_cuerpo_humano/Corazon.mp3",
         "image_answer": ["../../img/imgcuerpohumano/corazon.png", "../../img/imgcuerpohumano/estomago.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_cuerpo_humano/Mano.mp3",
         "image_answer": ["../../img/imgcuerpohumano/mano.png", "../../img/imgcuerpohumano/intestino.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_cuerpo_humano/Nariz.mp3",
         "image_answer": ["../../img/imgcuerpohumano/nariz.png", "../../img/imgcuerpohumano/ojo.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_cuerpo_humano/Oreja.mp3",
         "image_answer": ["../../img/imgcuerpohumano/oreja.png", "../../img/imgcuerpohumano/pie.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_cuerpo_humano/Pulmones.mp3",
         "image_answer": ["../../img/imgcuerpohumano/pulmones.png", "../../img/imgcuerpohumano/riñon.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_cuerpo_humano/Boca.mp3",
         "image_answer": ["../../img/imgcuerpohumano/lengua.png", "../../img/imgcuerpohumano/nariz.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_cuerpo_humano/Pierna.mp3",
         "image_answer": ["../../img/imgcuerpohumano/pierna.png", "../../img/imgcuerpohumano/mano.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/cerebro.png", "../../img/imgcuerpohumano/intestino.png"]
+        "audio_question": "../../audio/audio_cuerpo_humano/Intestino.mp3",
+        "image_answer": ["../../img/imgcuerpohumano/intestino.png", "../../img/imgcuerpohumano/cerebro.png"]
     }
 ];
 
@@ -81,9 +82,8 @@ const printHTMLQuestion = (i) => {
         audio = new Audio(q.audio_question);
         audio.play();
 
-        /*
-            Falta el audio_section
-        */
+        audio_section = new Audio(q.audio_section);
+        audio_section.play();
 
         let idimageQuestion = 1;
         let idimage = 1;
