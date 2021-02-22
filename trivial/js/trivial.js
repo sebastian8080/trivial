@@ -175,7 +175,7 @@ let arrayNumerosGenerados = [];
             console.log(numeroGenerado);
             arrayNumerosGenerados.forEach(numero => {
                 if(numero != numeroGenerado){
-                    return numeroGenerado;
+                    return 'hola';
                 } else {
                     arrayNumerosGenerados.push(numeroGenerado);
                     generarNumeroAleatorio();
