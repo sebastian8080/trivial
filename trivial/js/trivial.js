@@ -174,14 +174,14 @@ let arrayNumerosGenerados = [];
             let numeroGenerado = Math.floor(Math.random() * cuestionary.length);
             console.log(numeroGenerado);
             let numeroComprobado;
-            arrayNumerosGenerados.forEach(numero => {
-                if(numero != numeroGenerado){
-                     numeroComprobado = numeroComprobado;
+            for (let index = 0; index < arrayNumerosGenerados.length; index++) {
+                const element = arrayNumerosGenerados[index];
+                if(element != numeroGenerado){
+                    numeroComprobado = numeroGenerado;
                 } else {
                     arrayNumerosGenerados.push(numeroGenerado);
                     generarNumeroAleatorio();
                 }
-            });
-            console.log(numeroComprobado);
-            return numeroComprobado;    
+            }
+            return numeroComprobado;  
         }
