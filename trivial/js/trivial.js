@@ -172,6 +172,7 @@ let arrayNumerosGenerados = [];
         
         function generarNumeroAleatorio(){
             let numeroGenerado = Math.floor(Math.random() * (cuestionary.length - 0)) + 0;
+            console.log("!!!!!!!", numeroGenerado);
             arrayNumerosGenerados.forEach(numero => {
                 if(numero != numeroGenerado){
                     return numeroGenerado;
