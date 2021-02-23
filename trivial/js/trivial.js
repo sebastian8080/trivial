@@ -140,7 +140,7 @@ let imageQuestion;
             }
 
             console.log(parentP);
-            if (answer == rigthAnswer && arrayNumerosGenerados.length < 10) {
+            if (answer == rigthAnswer) {
                 audio.pause();
                 parentP.classList.add('rigth');
                 rigthAnswers++;
@@ -174,7 +174,6 @@ let imageQuestion;
         let arrayNumerosGenerados = [];
 
         function generarNumeroAleatorio(){
-            
             numeroGenerado = Math.floor(Math.random() * cuestionary.length);
             console.log(numeroGenerado);
             console.log(arrayNumerosGenerados);
@@ -184,6 +183,5 @@ let imageQuestion;
                 arrayNumerosGenerados.push(numeroGenerado);
                 numeroComprobado = numeroGenerado;
             }
-            return numeroComprobado;    
-                  
+            return numeroComprobado;         
         }
