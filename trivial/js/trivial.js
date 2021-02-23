@@ -84,7 +84,7 @@ let imageQuestion;
             let longitud_array = Object.keys(cuestionary).length;
 
             // if(currentQuestionIndex <= longitud_array - 1){
-                if(arrayNumerosGenerados.length < 10){
+                if(arrayNumerosGenerados.length <= 10){
                 console.log("currenQuestionIndex: " + currentQuestionIndex + " longitud_array: " + longitud_array);
                 const q = cuestionary[i];
                 let a = q.image_answer;
@@ -102,9 +102,6 @@ let imageQuestion;
 
                 audio = new Audio(q.audio_question);
                 audio.play();
-
-                audio_section = new Audio(q.audio_section);
-                audio_section.play();
 
                 let idimageQuestion = 1;
                 let idimage = 1;
@@ -167,6 +164,10 @@ let imageQuestion;
             document.querySelector('#btnIniciar').style.display = 'none';
             document.querySelector('.container').style.display = 'block';
             document.querySelector('#btnNext').style.display = 'none';
+            const q = cuestionary[0];
+
+            audio_section = new Audio(q.audio_section);
+            audio_section.play();
         }
         
         let numeroGenerado, numeroComprobado;
