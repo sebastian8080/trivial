@@ -168,12 +168,13 @@ let imageQuestion;
             document.querySelector('#btnNext').style.display = 'none';
         }
         
-        let lastNumber = 0;
         let numeroGenerado, numeroComprobado;
         let arrayNumerosGenerados = [];
+
         function generarNumeroAleatorio(){ 
             numeroGenerado = Math.floor(Math.random() * cuestionary.length);
             console.log(numeroGenerado);
+            console.log(arrayNumerosGenerados);
             if(arrayNumerosGenerados.includes(numeroGenerado)){
                 generarNumeroAleatorio();
             } else {
