@@ -171,15 +171,17 @@ let imageQuestion;
         let numeroGenerado, numeroComprobado;
         let arrayNumerosGenerados = [];
 
-        function generarNumeroAleatorio(){ 
-            numeroGenerado = Math.floor(Math.random() * cuestionary.length);
-            console.log(numeroGenerado);
-            console.log(arrayNumerosGenerados);
-            if(arrayNumerosGenerados.includes(numeroGenerado)){
-                generarNumeroAleatorio();
-            } else {
-                arrayNumerosGenerados.push(numeroGenerado);
-                numeroComprobado = numeroGenerado;
-            }
-            return numeroComprobado;
+        function generarNumeroAleatorio(){
+            do {
+                numeroGenerado = Math.floor(Math.random() * cuestionary.length);
+                console.log(numeroGenerado);
+                console.log(arrayNumerosGenerados);
+                if (arrayNumerosGenerados.includes(numeroGenerado)) {
+                    generarNumeroAleatorio();
+                } else {
+                    arrayNumerosGenerados.push(numeroGenerado);
+                    numeroComprobado = numeroGenerado;
+                }
+                return numeroComprobado;    
+            } while (arrayNumerosGenerados.length < 10);      
         }
