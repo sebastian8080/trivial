@@ -83,7 +83,8 @@ let imageQuestion;
             //currentQuestionIndex++;
             let longitud_array = Object.keys(cuestionary).length;
 
-            if(currentQuestionIndex <= longitud_array - 1){
+            // if(currentQuestionIndex <= longitud_array - 1){
+                if(arrayNumerosGenerados.length < 10){
                 console.log("currenQuestionIndex: " + currentQuestionIndex + " longitud_array: " + longitud_array);
                 const q = cuestionary[i];
                 let a = q.image_answer;
@@ -142,7 +143,7 @@ let imageQuestion;
             }
 
             console.log(parentP);
-            if (answer == rigthAnswer) {
+            if (answer == rigthAnswer && arrayNumerosGenerados.length < 10) {
                 audio.pause();
                 parentP.classList.add('rigth');
                 rigthAnswers++;
@@ -150,8 +151,8 @@ let imageQuestion;
                 document.querySelector('#btnNext').disabled = false;
                 let numero = generarNumeroAleatorio();
                 console.log('Siguientes numeros generados -> ' + numero);
-                currentQuestionIndex++;
-                printHTMLQuestion(currentQuestionIndex);
+                // currentQuestionIndex++;
+                printHTMLQuestion(numero);
             } else {
                 parentP.classList.add('wrong');
                 wrongAnswers++;
@@ -162,7 +163,7 @@ let imageQuestion;
         const iniciarTest = _ => {
             let numero = generarNumeroAleatorio();
             console.log('Primer numero generado -> ' + numero);
-            printHTMLQuestion(currentQuestionIndex);
+            printHTMLQuestion(numero);
             document.querySelector('#btnIniciar').style.display = 'none';
             document.querySelector('.container').style.display = 'block';
             document.querySelector('#btnNext').style.display = 'none';
@@ -172,16 +173,16 @@ let imageQuestion;
         let arrayNumerosGenerados = [];
 
         function generarNumeroAleatorio(){
-            do {
-                numeroGenerado = Math.floor(Math.random() * cuestionary.length);
-                console.log(numeroGenerado);
-                console.log(arrayNumerosGenerados);
-                if (arrayNumerosGenerados.includes(numeroGenerado)) {
-                    generarNumeroAleatorio();
-                } else {
-                    arrayNumerosGenerados.push(numeroGenerado);
-                    numeroComprobado = numeroGenerado;
-                }
-                return numeroComprobado;    
-            } while (arrayNumerosGenerados.length < 10);      
+            
+            numeroGenerado = Math.floor(Math.random() * cuestionary.length);
+            console.log(numeroGenerado);
+            console.log(arrayNumerosGenerados);
+            if (arrayNumerosGenerados.includes(numeroGenerado)) {
+                generarNumeroAleatorio();
+            } else {
+                arrayNumerosGenerados.push(numeroGenerado);
+                numeroComprobado = numeroGenerado;
+            }
+            return numeroComprobado;    
+                  
         }
