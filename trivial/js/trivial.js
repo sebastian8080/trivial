@@ -21,6 +21,7 @@ let imageQuestion;
 //Array para ir agregando los numeros que ya salen
 let arrayNumerosGenerados = [];
 let numeroGenerado, numeroComprobado;
+let bandera = true;
 
         const cuestionary = [
             {
@@ -173,7 +174,6 @@ let numeroGenerado, numeroComprobado;
         }
         
         function generarNumeroAleatorio(){
-            let bandera;
             do{
                 numeroGenerado = Math.floor(Math.random() * cuestionary.length);
                 console.log(numeroGenerado);
