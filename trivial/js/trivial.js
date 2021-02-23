@@ -132,12 +132,7 @@ let imageQuestion;
                 rigthAnswers++;
                 document.querySelector('.rigthCounter').innerHTML = rigthAnswers;
                 document.querySelector('#btnNext').disabled = false;
-                if(arrayNumerosGenerados.length <= 10){
-                    let numero = generarNumeroAleatorio();
-                    console.log('Siguientes numeros generados -> ' + numero);
-                    // currentQuestionIndex++;
-                    printHTMLQuestion(numero);
-                } else {
+                if(arrayNumerosGenerados.length = 10){
                     audio_section.pause();
                     document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
                     document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
@@ -146,7 +141,12 @@ let imageQuestion;
                     document.querySelector('#btnNext').remove();
                     setTimeout(function () {
                         window.location.href = "../../sections.html";
-                    }, 5000);   
+                    }, 5000); 
+                } else {  
+                    let numero = generarNumeroAleatorio();
+                    console.log('Siguientes numeros generados -> ' + numero);
+                    // currentQuestionIndex++;
+                    printHTMLQuestion(numero);
                 }
             } else {
                 parentP.classList.add('wrong');
@@ -172,16 +172,14 @@ let imageQuestion;
         let arrayNumerosGenerados = [];
 
         function generarNumeroAleatorio(){
-            while (arrayNumerosGenerados.length <= 10) {
-                numeroGenerado = Math.floor(Math.random() * cuestionary.length);
-                console.log(numeroGenerado);
-                console.log(arrayNumerosGenerados);
-                if (arrayNumerosGenerados.includes(numeroGenerado)) {
-                    generarNumeroAleatorio();
-                } else {
-                    arrayNumerosGenerados.push(numeroGenerado);
-                    numeroComprobado = numeroGenerado;
-                }
-                return numeroComprobado;    
-            }       
+            numeroGenerado = Math.floor(Math.random() * cuestionary.length);
+            console.log(numeroGenerado);
+            console.log(arrayNumerosGenerados);
+            if (arrayNumerosGenerados.includes(numeroGenerado)) {
+                generarNumeroAleatorio();
+            } else {
+                arrayNumerosGenerados.push(numeroGenerado);
+                numeroComprobado = numeroGenerado;
+            }
+            return numeroComprobado;    
         }
