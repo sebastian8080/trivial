@@ -132,7 +132,12 @@ let imageQuestion;
                 rigthAnswers++;
                 document.querySelector('.rigthCounter').innerHTML = rigthAnswers;
                 document.querySelector('#btnNext').disabled = false;
-                if(arrayNumerosGenerados.length = 10){
+                if(arrayNumerosGenerados.length < 10){
+                    let numero = generarNumeroAleatorio();
+                    console.log('Siguientes numeros generados -> ' + numero);
+                    // currentQuestionIndex++;
+                    printHTMLQuestion(numero);
+                } else {
                     audio_section.pause();
                     document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
                     document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
@@ -141,12 +146,7 @@ let imageQuestion;
                     document.querySelector('#btnNext').remove();
                     setTimeout(function () {
                         window.location.href = "../../sections.html";
-                    }, 5000); 
-                } else {  
-                    let numero = generarNumeroAleatorio();
-                    console.log('Siguientes numeros generados -> ' + numero);
-                    // currentQuestionIndex++;
-                    printHTMLQuestion(numero);
+                    }, 5000);   
                 }
             } else {
                 parentP.classList.add('wrong');
