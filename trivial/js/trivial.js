@@ -21,7 +21,7 @@ let imageQuestion;
         const cuestionary = [
             {
                 "audio_section" : "../../audio/audio_animales/Musica_fondo.mp3",
-                "audio_question": "../../audio/audio_animales/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+                "audio_question": "../../audio/audio_animales/Audio_vaca.mp3",
                 "image_answer": ["../../img/imganimales/vaca_animada.png", "../../img/imganimales/caballo_animado.png"]
             },
             {
