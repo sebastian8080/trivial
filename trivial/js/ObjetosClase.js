@@ -115,8 +115,11 @@ const printHTMLQuestion = (i) => {
 
 const evaluateAnswer = (answer, obj) => {
 
-    document.querySelectorAll('#grid1').forEach(a => a.classList.remove('rigth', 'wrong'));
+    // document.querySelectorAll('#grid1').forEach(a => a.classList.remove('rigth', 'wrong'));
     const parentP = obj.parentNode;
+    if(parentP.classList.contains("rigth") || parentP.classList.contains("wrong")){
+        parentP.classList.remove('rigth', 'wrong');
+    }
     if (answer == rigthAnswer) {
         audio.pause();
         parentP.classList.add('rigth');
