@@ -19,9 +19,7 @@ let titulo = "Los Animales";
 let imageQuestion;
 
 //Array para ir agregando los numeros que ya salen
-let arrayNumerosGenerados = [];
-let numeroGenerado, numeroComprobado;
-let bandera = true;
+let arrayNumerosRandom = [];
 
         const cuestionary = [
             {
@@ -153,8 +151,6 @@ let bandera = true;
                 rigthAnswers++;
                 document.querySelector('.rigthCounter').innerHTML = rigthAnswers;
                 document.querySelector('#btnNext').disabled = false;
-                let otrosNumerosGenerados = generarNumeroAleatorio();
-                console.log('Siguiente numero generado -> ', otrosNumerosGenerados);
                 currentQuestionIndex++;
                 printHTMLQuestion(currentQuestionIndex);
             } else {
@@ -165,30 +161,30 @@ let bandera = true;
         }
 
         const iniciarTest = _ => {
-            let primerNumeroGenerado = generarNumeroAleatorio();
-            console.log("Primer numero generado -> " + primerNumeroGenerado);
+            arrayNumerosRandom = cuestionary.sort(function(){ return Math.random() * (cuestionary.length)});
+            console.table(arrayNumerosRandom);
             printHTMLQuestion(currentQuestionIndex);
             document.querySelector('#btnIniciar').style.display = 'none';
             document.querySelector('.container').style.display = 'block';
             document.querySelector('#btnNext').style.display = 'none';
         }
         
-        function generarNumeroAleatorio(){
-            do{
-                numeroGenerado = Math.floor(Math.random() * cuestionary.length);
-                console.log(numeroGenerado);
-                numeroComprobado;
-                    for (let index = 0; index < arrayNumerosGenerados.length; index++) {
-                        const element = arrayNumerosGenerados[index];
-                        if(element != numeroGenerado){
-                            numeroComprobado = numeroGenerado;
-                            bandera = false;
-                        } else {
-                            arrayNumerosGenerados.push(numeroGenerado);
-                            generarNumeroAleatorio();
-                            bandera = true;
-                        }
-                    }
-            } while(bandera == false);    
-            return numeroComprobado;  
-        }
+        // function generarNumeroAleatorio(){
+        //     do{
+        //         numeroGenerado = Math.floor(Math.random() * cuestionary.length);
+        //         console.log(numeroGenerado);
+        //         numeroComprobado;
+        //             for (let index = 0; index < arrayNumerosGenerados.length; index++) {
+        //                 const element = arrayNumerosGenerados[index];
+        //                 if(element != numeroGenerado){
+        //                     numeroComprobado = numeroGenerado;
+        //                     bandera = false;
+        //                 } else {
+        //                     arrayNumerosGenerados.push(numeroGenerado);
+        //                     generarNumeroAleatorio();
+        //                     bandera = true;
+        //                 }
+        //             }
+        //     } while(bandera == false);    
+        //     return numeroComprobado;  
+        // }
