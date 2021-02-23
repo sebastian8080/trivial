@@ -9,7 +9,7 @@
     <!--LINK DE CSS DE ESTE ARCHIVP-->
     <link rel="stylesheet" href="../css/trivial.css">
 </head>
-<body>
+<body onmousedown="detectarBoton(event);">
 
     <div class="jumbotron bg-info">
         <h1 id="h1animales" class="display-4"></h1>     
@@ -19,7 +19,7 @@
         <button id="btnIniciar" class="btn btn-primary" onClick="iniciarTest()">Comenzar a aprender</button>
     </div>
 
-    <div class="container" onmousedown="detectarBoton(event);">
+    <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <img id="imgQuestion" src="" alt="">
