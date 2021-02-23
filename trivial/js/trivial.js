@@ -20,6 +20,8 @@ let imageQuestion;
 
 //Array para ir agregando los numeros que ya salen
 let arrayNumerosGenerados = [];
+let numeroGenerado, numeroComprobado;
+
         const cuestionary = [
             {
                 "audio_section" : "../../audio/audio_animales/Musica_fondo.mp3",
@@ -150,8 +152,8 @@ let arrayNumerosGenerados = [];
                 rigthAnswers++;
                 document.querySelector('.rigthCounter').innerHTML = rigthAnswers;
                 document.querySelector('#btnNext').disabled = false;
-                let numeroGenerado = generarNumeroAleatorio();
-                console.log('Siguiente numero generado -> ', numeroGenerado);
+                let otrosNumerosGenerados = generarNumeroAleatorio();
+                console.log('Siguiente numero generado -> ', otrosNumerosGenerados);
                 currentQuestionIndex++;
                 printHTMLQuestion(currentQuestionIndex);
             } else {
@@ -162,8 +164,8 @@ let arrayNumerosGenerados = [];
         }
 
         const iniciarTest = _ => {
-            let numeroGenerado = generarNumeroAleatorio();
-            console.log("Primer numero generado -> " + numeroGenerado);
+            let primerNumeroGenerado = generarNumeroAleatorio();
+            console.log("Primer numero generado -> " + primerNumeroGenerado);
             printHTMLQuestion(currentQuestionIndex);
             document.querySelector('#btnIniciar').style.display = 'none';
             document.querySelector('.container').style.display = 'block';
@@ -171,10 +173,10 @@ let arrayNumerosGenerados = [];
         }
         
         function generarNumeroAleatorio(){
-            let numeroGenerado = Math.floor(Math.random() * cuestionary.length);
+            numeroGenerado = Math.floor(Math.random() * cuestionary.length);
             console.log(numeroGenerado);
-            let numeroComprobado;
-            for (let index = 0; index < arrayNumerosGenerados.length; index++) {
+            numeroComprobado;
+            for (let index = 0; index < cuestionary.length; index++) {
                 const element = arrayNumerosGenerados[index];
                 if(element != numeroGenerado){
                     numeroComprobado = numeroGenerado;
