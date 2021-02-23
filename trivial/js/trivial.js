@@ -84,7 +84,7 @@ let imageQuestion;
             let longitud_array = Object.keys(cuestionary).length;
 
             // if(currentQuestionIndex <= longitud_array - 1){
-                if(arrayNumerosGenerados.length <= 10){
+                // if(arrayNumerosGenerados.length <= 10){
                 console.log("currenQuestionIndex: " + currentQuestionIndex + " longitud_array: " + longitud_array);
                 const q = cuestionary[i];
                 let a = q.image_answer;
@@ -115,28 +115,14 @@ let imageQuestion;
 
                 document.querySelector('#btnNext').disabled = true;
 
-            } else {
-                audio_section.pause();
-                document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
-                document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
-                document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;
-                document.querySelector('.alert').style.display = 'block';
-                document.querySelector('#btnNext').remove();
-                setTimeout(function(){
-                    window.location.href = "../../sections.html";
-                }, 5000);   
-            }
+            
         }
 
         const evaluateAnswer = (answer, obj) => {
             const parentP = obj.parentNode;
-            /*
-                Al añadir este if ya me cambia de color 
-                al cambiar la pregunta, pero no le quita
-                la clase
-            */
+            
             if(parentP.classList.contains("rigth") || parentP.classList.contains("wrong")){
-                parentP.classList.remove('rigth', 'wrong');
+                parentP.classList.remove('rigth', 'wrong');  //ESTE IF ES PARA LAS CLASES DE COLOR ROJO Y VERDE
             }
 
             console.log(parentP);
@@ -146,10 +132,22 @@ let imageQuestion;
                 rigthAnswers++;
                 document.querySelector('.rigthCounter').innerHTML = rigthAnswers;
                 document.querySelector('#btnNext').disabled = false;
-                let numero = generarNumeroAleatorio();
-                console.log('Siguientes numeros generados -> ' + numero);
-                // currentQuestionIndex++;
-                printHTMLQuestion(numero);
+                if(arrayNumerosGenerados.length <= 10){
+                    let numero = generarNumeroAleatorio();
+                    console.log('Siguientes numeros generados -> ' + numero);
+                    // currentQuestionIndex++;
+                    printHTMLQuestion(numero);
+                } else {
+                    audio_section.pause();
+                    document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
+                    document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
+                    document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;
+                    document.querySelector('.alert').style.display = 'block';
+                    document.querySelector('#btnNext').remove();
+                    setTimeout(function () {
+                        window.location.href = "../../sections.html";
+                    }, 5000);   
+                }
             } else {
                 parentP.classList.add('wrong');
                 wrongAnswers++;
