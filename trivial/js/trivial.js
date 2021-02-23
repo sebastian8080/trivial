@@ -18,9 +18,6 @@ let titulo = "Los Animales";
 //Variable para la imageQuestion
 let imageQuestion;
 
-//Array para ir agregando los numeros que ya salen
-let arrayNumerosRandom = [];
-
         const cuestionary = [
             {
                 "audio_section" : "../../audio/audio_animales/Musica_fondo.mp3",
@@ -75,8 +72,6 @@ let arrayNumerosRandom = [];
                 document.oncontextmenu = document.body.oncontextmenu = function(){ return false }; //No permite que se abra el menu al presionar click derecho
             } else if (event.button == 0){
                 respuesta = document.getElementById("img1").getAttribute("src");
-            } else {
-                console.log('No se ha presionado ningun boton');
             }
             objeto = document.getElementById("grid1");
             evaluateAnswer(respuesta, objeto);
@@ -153,6 +148,8 @@ let arrayNumerosRandom = [];
                 rigthAnswers++;
                 document.querySelector('.rigthCounter').innerHTML = rigthAnswers;
                 document.querySelector('#btnNext').disabled = false;
+                let numero = generarNumeroAleatorio();
+                console.log('Siguientes numeros generados -> ' + numero);
                 currentQuestionIndex++;
                 printHTMLQuestion(currentQuestionIndex);
             } else {
@@ -163,11 +160,25 @@ let arrayNumerosRandom = [];
         }
 
         const iniciarTest = _ => {
-            arrayNumerosRandom = cuestionary.sort(function(){ return Math.random() * (cuestionary.length)});
-            console.log(arrayNumerosRandom);
+            let numero = generarNumeroAleatorio();
+            console.log('Primer numero generado -> ' + numero);
             printHTMLQuestion(currentQuestionIndex);
             document.querySelector('#btnIniciar').style.display = 'none';
             document.querySelector('.container').style.display = 'block';
             document.querySelector('#btnNext').style.display = 'none';
         }
-    
+        
+        let lastNumber = 0;
+        let numeroGenerado, numeroComprobado;
+        let arrayNumerosGenerados = [];
+        function generarNumeroAleatorio(){ 
+            numeroGenerado = Math.floor(Math.random() * cuestionary.length);
+            console.log(numeroGenerado);
+            if(arrayNumerosGenerados.includes(numeroGenerado)){
+                generarNumeroAleatorio();
+            } else {
+                arrayNumerosGenerados.push(numeroGenerado);
+                numeroComprobado = numeroGenerado;
+            }
+            return numeroComprobado;
+        }
