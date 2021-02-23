@@ -173,11 +173,11 @@ let numeroGenerado, numeroComprobado;
         }
         
         function generarNumeroAleatorio(){
+            let bandera;
             do{
                 numeroGenerado = Math.floor(Math.random() * cuestionary.length);
                 console.log(numeroGenerado);
                 numeroComprobado;
-                let bandera = true;
                     for (let index = 0; index < arrayNumerosGenerados.length; index++) {
                         const element = arrayNumerosGenerados[index];
                         if(element != numeroGenerado){
