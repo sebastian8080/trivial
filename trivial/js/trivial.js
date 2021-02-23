@@ -75,6 +75,8 @@ let arrayNumerosRandom = [];
                 document.oncontextmenu = document.body.oncontextmenu = function(){ return false }; //No permite que se abra el menu al presionar click derecho
             } else if (event.button == 0){
                 respuesta = document.getElementById("img1").getAttribute("src");
+            } else {
+                console.log('No se ha presionado ningun boton');
             }
             objeto = document.getElementById("grid1");
             evaluateAnswer(respuesta, objeto);
