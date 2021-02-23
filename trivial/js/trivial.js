@@ -173,17 +173,22 @@ let numeroGenerado, numeroComprobado;
         }
         
         function generarNumeroAleatorio(){
-            numeroGenerado = Math.floor(Math.random() * cuestionary.length);
-            console.log(numeroGenerado);
-            numeroComprobado;
-            for (let index = 0; index < arrayNumerosGenerados.length; index++) {
-                const element = arrayNumerosGenerados[index];
-                if(element != numeroGenerado){
-                    numeroComprobado = numeroGenerado;
-                } else {
-                    arrayNumerosGenerados.push(numeroGenerado);
-                    generarNumeroAleatorio();
-                }
-            }
+            do{
+                numeroGenerado = Math.floor(Math.random() * cuestionary.length);
+                console.log(numeroGenerado);
+                numeroComprobado;
+                let bandera = true;
+                    for (let index = 0; index < arrayNumerosGenerados.length; index++) {
+                        const element = arrayNumerosGenerados[index];
+                        if(element != numeroGenerado){
+                            numeroComprobado = numeroGenerado;
+                            bandera = false;
+                        } else {
+                            arrayNumerosGenerados.push(numeroGenerado);
+                            generarNumeroAleatorio();
+                            bandera = true;
+                        }
+                    }
+            } while(bandera == false);    
             return numeroComprobado;  
         }
