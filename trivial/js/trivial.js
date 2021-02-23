@@ -164,7 +164,7 @@ let arrayNumerosRandom = [];
 
         const iniciarTest = _ => {
             arrayNumerosRandom = cuestionary.sort(function(){ return Math.random() * (cuestionary.length)});
-            console.table(arrayNumerosRandom);
+            console.log(arrayNumerosRandom);
             printHTMLQuestion(currentQuestionIndex);
             document.querySelector('#btnIniciar').style.display = 'none';
             document.querySelector('.container').style.display = 'block';
