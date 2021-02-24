@@ -14,6 +14,8 @@ let respuesta, objeto;
 
 let titulo = "Objetos de la Clase"
 
+let imageQuestion;
+
 const cuestionary = [
     {
         "audio_section": "../../audio/audio_objetos_clase/musica_fondo.mp3",
@@ -75,7 +77,7 @@ const printHTMLQuestion = (i) => {
     //currentQuestionIndex++;
     let longitud_array = Object.keys(cuestionary).length;
 
-    if (currentQuestionIndex <= longitud_array - 1) {
+    // if (currentQuestionIndex <= longitud_array - 1) {
         const q = cuestionary[i];
         let a = q.image_answer;
         rigthAnswer = a[0];
@@ -84,9 +86,6 @@ const printHTMLQuestion = (i) => {
 
         audio = new Audio(q.audio_question);
         audio.play();
-
-        audio_section = new Audio(q.audio_section);
-        audio_section.play();
 
         let idimageQuestion = 1;
         let idimage = 1;
@@ -99,35 +98,37 @@ const printHTMLQuestion = (i) => {
         document.querySelector('#grid1').innerHTML = htmlAnswer;
         
         document.querySelector("#btnNext").disabled = true;
-    } else {
-        audio_section.pause();
-        document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
-        document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
-        document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;
-        document.querySelector('.alert').style.display = 'block';
-        document.querySelector('#btnNext').remove();
-        setTimeout(function(){
-            window.location.href = "../../sections.html";
-        }, 5000);
-    }
-
 }
 
 const evaluateAnswer = (answer, obj) => {
-
-    // document.querySelectorAll('#grid1').forEach(a => a.classList.remove('rigth', 'wrong'));
     const parentP = obj.parentNode;
+
     if(parentP.classList.contains("rigth") || parentP.classList.contains("wrong")){
         parentP.classList.remove('rigth', 'wrong');
     }
+
     if (answer == rigthAnswer) {
         audio.pause();
         parentP.classList.add('rigth');
         rigthAnswers++;
         document.querySelector('.rigthCounter').innerHTML = rigthAnswers;
         document.querySelector('#btnNext').disabled = true;
-        currentQuestionIndex++;
-        printHTMLQuestion(currentQuestionIndex);
+        if(arrayNumerosGenerados.length < 10){
+            // currentQuestionIndex++;
+            let numero = generarNumeroAleatorio();
+            printHTMLQuestion(numero);
+        } else {
+            audio_section.pause();
+            document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
+            document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
+            document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;
+            document.querySelector('.alert').style.display = 'block';
+            document.querySelector('#btnNext').remove();
+            setTimeout(function(){
+                window.location.href = "../../sections.html";
+            }, 5000);
+        }
+        
     } else {
         parentP.classList.add('wrong');
         wrongAnswers++;
@@ -136,9 +137,29 @@ const evaluateAnswer = (answer, obj) => {
 }
 
 const iniciarTest = _ => {
-    printHTMLQuestion(currentQuestionIndex);
+    let numero = generarNumeroAleatorio();
+    printHTMLQuestion(numero);
     document.querySelector('#btnIniciar').style.display = 'none';
     document.querySelector('.container').style.display = 'block';
     document.querySelector('#btnNext').style.display = 'none';
+
+    const q = cuestionary[0];
+    audio_section = new Audio(q.audio_section);
+    audio_section.play();
 }
 
+let numeroGenerado, numeroComprobado;
+let arrayNumerosGenerados = [];
+
+function generarNumeroAleatorio(){
+    numeroGenerado = Math.floor(Math.random() * cuestionary.length);
+    console.log(numeroGenerado);
+    console.log(arrayNumerosGenerados);
+    if (arrayNumerosGenerados.includes(numeroGenerado)) {
+        generarNumeroAleatorio();
+    } else {
+        arrayNumerosGenerados.push(numeroGenerado);
+        numeroComprobado = numeroGenerado;
+    }
+    return numeroComprobado;    
+}

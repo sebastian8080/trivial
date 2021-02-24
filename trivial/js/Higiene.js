@@ -14,6 +14,8 @@ let respuesta, objeto;
 //Variable para el titulo
 let titulo = "La Higiene";
 
+let imageQuestion;
+
 const cuestionary = [
     {
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
@@ -63,52 +65,29 @@ function detectarBoton(event) {
         respuesta = document.getElementById("img1").getAttribute("src");
     }
     objeto = document.getElementById("grid1");
-    console.log(respuesta + " " + objeto);
     evaluateAnswer(respuesta, objeto);
 }
 
 const printHTMLQuestion = (i) => {
-    //currentQuestionIndex++;
-    let longitud_array = Object.keys(cuestionary).length;
+    const q = cuestionary[i];
+    let a = q.image_answer;
+    rigthAnswer = a[0];
 
-    if (currentQuestionIndex <= longitud_array - 1) {
-        const q = cuestionary[i];
-        let a = q.image_answer;
-        rigthAnswer = a[0];
+    a = a.sort((a, b) => Math.floor(Math.random() * 3) - 1);
 
-        a = a.sort((a, b) => Math.floor(Math.random() * 3) - 1);
+    audio = new Audio(q.audio_question);
+    audio.play();
 
-        audio = new Audio(q.audio_question);
-        audio.play();
+    let idimageQuestion = 1;
+    let idimage = 1;
 
-        /*
-            Falta el audio_section
-        */
+    const htmlAnswerArray = a.map(currentA =>
+        `<button id="answer${idimageQuestion++}"><img id="img${idimage++}" src="${currentA}"></img></button>`,
+    );
 
-        let idimageQuestion = 1;
-        let idimage = 1;
-
-        const htmlAnswerArray = a.map(currentA =>
-            `<button id="answer${idimageQuestion++}"><img id="img${idimage++}" src="${currentA}"></img></button>`,
-        );
-
-        const htmlAnswer = htmlAnswerArray.join(' ');
-        document.querySelector("#grid1").innerHTML = htmlAnswer;
-
-        document.querySelector('#btnNext').disabled = true;
-
-    } else {
-        audio_section.pause();
-        document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
-        document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
-        document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;
-        document.querySelector('.alert').style.display = 'block';
-        document.querySelector('#btnNext').remove();
-        setTimeout(function () {
-            window.location.href = "../../sections.html";
-        }, 5000);
-    }
-
+    const htmlAnswer = htmlAnswerArray.join(' ');
+    document.querySelector("#grid1").innerHTML = htmlAnswer;
+    document.querySelector('#btnNext').disabled = true;
 }
 
 const evaluateAnswer = (answer, obj) => {
@@ -121,8 +100,20 @@ const evaluateAnswer = (answer, obj) => {
         rigthAnswers++;
         document.querySelector('.rigthCounter').innerHTML = rigthAnswers;
         document.querySelector('#btnNext').disabled = false;
-        currentQuestionIndex++;
-        printHTMLQuestion(currentQuestionIndex);
+        if (arrayNumerosGenerados.length < 10) {
+            let numero = generarNumeroAleatorio();
+            printHTMLQuestion(numero);
+        } else {
+            audio_section.pause();
+            document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
+            document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
+            document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;
+            document.querySelector('.alert').style.display = 'block';
+            document.querySelector('#btnNext').remove();
+            setTimeout(function () {
+                window.location.href = "../../sections.html";
+            }, 5000);
+        }
     } else {
         parentP.classList.add('wrong');
         wrongAnswers++;
@@ -131,9 +122,30 @@ const evaluateAnswer = (answer, obj) => {
 }
 
 const iniciarTest = _ => {
-    printHTMLQuestion(currentQuestionIndex);
+    let numero = generarNumeroAleatorio();
+    printHTMLQuestion(numero);
     document.querySelector('#btnIniciar').style.display = 'none';
     document.querySelector('.container').style.display = 'block';
     document.querySelector('#btnNext').style.display = 'none';
+
+    const q = cuestionary[0];
+    audio_section = new Audio(q.audio_section);
+    audio_section.play();   
+}
+
+let numeroGenerado, numeroComprobado;
+let arrayNumerosGenerados = [];
+
+function generarNumeroAleatorio() {
+    numeroGenerado = Math.floor(Math.random() * cuestionary.length);
+    console.log(numeroGenerado);
+    console.log(arrayNumerosGenerados);
+    if (arrayNumerosGenerados.includes(numeroGenerado)) {
+        generarNumeroAleatorio();
+    } else {
+        arrayNumerosGenerados.push(numeroGenerado);
+        numeroComprobado = numeroGenerado;
+    }
+    return numeroComprobado;
 }
 
