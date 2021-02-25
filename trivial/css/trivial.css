@@ -44,17 +44,20 @@ img{
 
 .alert{
     position: absolute;
-    position: absolute;
-    top:50%;
-    left: 50%;           
+    top:41%;
+    left: 42%;           
     margin-top: -100px;
     margin-left: -100px;
-    display: none;
-}
+    display: block;
+}   
 
 #imgQuestion{
     display: none;
     height: 150px;
     width: 150px;
     margin: auto;
+}
+
+h2{
+    text-align: center;
 }

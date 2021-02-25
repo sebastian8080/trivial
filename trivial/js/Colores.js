@@ -134,9 +134,6 @@ const evaluateAnswer = (answer, obj) => {
             document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;
             document.querySelector('.alert').style.display = 'block';
             document.querySelector('#btnNext').remove();
-            setTimeout(function () {
-                window.location.href = "../../sections.html";
-            }, 5000);
         }
     } else {
         parentP.classList.add('wrong');
