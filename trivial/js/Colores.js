@@ -124,11 +124,12 @@ const evaluateAnswer = (answer, obj) => {
         rigthAnswers++;
         document.querySelector('.rigthCounter').innerHTML = rigthAnswers;
         document.querySelector('#btnNext').disabled = false;
-        if(arrayNumerosGenerados < 10){
+        if(arrayNumerosGenerados.length < 10){
             let numero = generarNumeroAleatorio();
             printHTMLQuestion(numero);
         } else {
             audio_section.pause();
+            document.querySelector('.container').style.display = 'none';
             document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
             document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
             document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;

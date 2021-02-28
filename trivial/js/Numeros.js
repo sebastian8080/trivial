@@ -19,41 +19,55 @@ let imageQuestion;
 
 const cuestionary = [
     {
+        "audio_section": "../../audio/audio_numeros/musica_fondo.mp3",
         "image_question": "../../img/imgnumeros/personas.png",
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_numeros/4personas.mp3",
         "image_answer": ["../../img/imgnumeros/4.png", "../../img/imgnumeros/5.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/corazon.png", "../../img/imgcuerpohumano/estomago.png"]
+        "image_question": "../../img/imgnumeros/figuras.png",
+        "audio_question": "../../audio/audio_numeros/9.mp3",
+        "image_answer": ["../../img/imgnumeros/9.png", "../../img/imgnumeros/7.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/mano.png", "../../img/imgcuerpohumano/intestino.png"]
+        "image_question": "../../img/imgnumeros/familia.png",
+        "audio_question": "../../audio/audio_numeros/5.mp3",
+        "image_answer": ["../../img/imgnumeros/5.png", "../../img/imgnumeros/6.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/nariz.png", "../../img/imgcuerpohumano/ojo.png"]
+        "image_question": "../../img/imgnumeros/vestido.png",
+        "audio_question": "../../audio/audio_numeros/1.mp3",
+        "image_answer": ["../../img/imgnumeros/1.png", "../../img/imgnumeros/7.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/oreja.png", "../../img/imgcuerpohumano/pie.png"]
+        "image_question": "../../img/imgnumeros/monos.png",
+        "audio_question": "../../audio/audio_numeros/3.mp3",
+        "image_answer": ["../../img/imgnumeros/3.png", "../../img/imgnumeros/2.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/pulmones.png", "../../img/imgcuerpohumano/riñon.png"]
+        "image_question": "../../img/imgnumeros/enanos.png",
+        "audio_question": "../../audio/audio_numeros/7.mp3",
+        "image_answer": ["../../img/imgnumeros/7.png", "../../img/imgnumeros/8.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/lengua.png", "../../img/imgcuerpohumano/nariz.png"]
+        "image_question": "../../img/imgnumeros/frutas.png",
+        "audio_question": "../../audio/audio_numeros/6.mp3",
+        "image_answer": ["../../img/imgnumeros/6.png", "../../img/imgnumeros/4.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/pierna.png", "../../img/imgcuerpohumano/mano.png"]
+        "image_question": "../../img/imgnumeros/globos.jpg",
+        "audio_question": "../../audio/audio_numeros/8.mp3",
+        "image_answer": ["../../img/imgnumeros/8.png", "../../img/imgnumeros/9.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/cerebro.png", "../../img/imgcuerpohumano/intestino.png"]
+        "image_question": "../../img/imgnumeros/manzanas.png",
+        "audio_question": "../../audio/audio_numeros/4.mp3",
+        "image_answer": ["../../img/imgnumeros/4.png", "../../img/imgnumeros/3.png"]
+    },
+    {
+        "image_question": "../../img/imgnumeros/tren.png",
+        "audio_question": "../../audio/audio_numeros/2.mp3",
+        "image_answer": ["../../img/imgnumeros/2.png", "../../img/imgnumeros/5.png"]
     }
 ];
 
@@ -79,8 +93,10 @@ const printHTMLQuestion = (i) => {
     if (imageQuestion != null) {
         document.querySelector('#imgQuestion').setAttribute('src', imageQuestion);
         document.querySelector('#imgQuestion').style.display = 'block';
+        document.querySelector('.jumbotron').style.display = 'none';
     } else {
         document.querySelector('#imgQuestion').style.display = 'none';
+        document.querySelector('.jumbotron').style.display = 'block';
     }
 
     a = a.sort((a, b) => Math.floor(Math.random() * 3) - 1);
@@ -107,6 +123,7 @@ const evaluateAnswer = (answer, obj) => {
         parentP.classList.remove('rigth', 'wrong');
     }
     if (answer == rigthAnswer) {
+        audio.pause();
         parentP.classList.add('rigth');
         rigthAnswers++;
         document.querySelector('.rigthCounter').innerHTML = rigthAnswers;

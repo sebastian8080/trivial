@@ -18,7 +18,7 @@ let imageQuestion;
 
 const cuestionary = [
     {
-        "audio_section": "../../audio/audio_cuerpo_humano/Fondo.mp3",
+        "audio_section": "../../audio/audio_cuerpo_humano/musica_fondo.mp3",
         "audio_question": "../../audio/audio_cuerpo_humano/Cerebro.mp3",
         "image_answer": ["../../img/imgcuerpohumano/cerebro.png", "../../img/imgcuerpohumano/boca.png"]
     },
@@ -53,6 +53,26 @@ const cuestionary = [
     {
         "audio_question": "../../audio/audio_cuerpo_humano/Intestino.mp3",
         "image_answer": ["../../img/imgcuerpohumano/intestino.png", "../../img/imgcuerpohumano/cerebro.png"]
+    },
+    {
+        "image_question": "../../img/imgcuerpohumano/guantes.png",
+        "audio_question": "../../audio/audio_cuerpo_humano/utilizar_guantes.mp3",
+        "image_answer": ["../../img/imgcuerpohumano/mano.png", "../../img/imgcuerpohumano/pie1.png"]
+    },
+    {
+        "image_question": "../../img/imgcuerpohumano/flor.png",
+        "audio_question": "../../audio/audio_cuerpo_humano/olor_flor.mp3",
+        "image_answer": ["../../img/imgcuerpohumano/nariz.png", "../../img/imgcuerpohumano/oreja.png"]
+    },
+    {
+        "image_question": "../../img/imgcuerpohumano/helado.png",
+        "audio_question": "../../audio/audio_cuerpo_humano/sabor_helado.mp3",
+        "image_answer": ["../../img/imgcuerpohumano/lengua.png", "../../img/imgcuerpohumano/ojo.png"]
+    },
+    {
+        "image_question": "../../img/imgcuerpohumano/musica.png",
+        "audio_question": "../../audio/audio_cuerpo_humano/escuchar_musica.mp3",
+        "image_answer": ["../../img/imgcuerpohumano/oreja.png", "../../img/imgcuerpohumano/ojo.png"]
     }
 ];
 
@@ -72,7 +92,17 @@ function detectarBoton(event) {
 const printHTMLQuestion = (i) => {
     const q = cuestionary[i];
     let a = q.image_answer;
+    imageQuestion = q.image_question;
     rigthAnswer = a[0];
+
+    if (imageQuestion != null) {
+        document.querySelector('#imgQuestion').setAttribute("src", imageQuestion);
+        document.querySelector('#imgQuestion').style.display = 'block';
+        document.querySelector('.jumbotron').style.display = 'none';
+    } else {
+        document.querySelector('#imgQuestion').style.display = 'none';
+        document.querySelector('.jumbotron').style.display = 'block';
+    }
 
     a = a.sort((a, b) => Math.floor(Math.random() * 3) - 1);
 
@@ -97,6 +127,7 @@ const evaluateAnswer = (answer, obj) => {
         parentP.classList.remove('rigth', 'wrong');
     }
     if (answer == rigthAnswer) {
+        audio.pause();
         parentP.classList.add('rigth');
         rigthAnswers++;
         document.querySelector('.rigthCounter').innerHTML = rigthAnswers;

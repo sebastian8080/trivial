@@ -19,6 +19,7 @@ let imageQuestion;
 
 const cuestionary = [
     {
+        "audio_section": "../../audio/audio_emociones/musica_fondo.mp3",
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
         "image_answer": ["../../img/imgemociones/chico_asustado.png", "../../img/imgemociones/emocion_duda.png"]
     },
@@ -53,6 +54,18 @@ const cuestionary = [
     {
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
         "image_answer": ["../../img/imgemociones/triste.png", "../../img/imgemociones/chica_feliz.png"]
+    },
+    {
+        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "image_answer": ["../../img/imgemociones/enojo_intensamente.png", "../../img/imgemociones/temor_intensamente.png"]
+    },
+    {
+        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "image_answer": ["../../img/imgemociones/tristeza_intensamente.png", "../../img/imgemociones/desagrado_intensamente.png"]
+    },
+    {
+        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "image_answer": ["../../img/imgemociones/alegria_intensamente.png", "../../img/imgemociones/enojo_intensamente.png"]
     }
 ];
 document.querySelector('#h1emociones').innerHTML = titulo;
@@ -96,6 +109,7 @@ const evaluateAnswer = (answer, obj) => {
         parentP.classList.remove('rigth', 'wrong');
     }
     if (answer == rigthAnswer) {
+        audio.pause();
         parentP.classList.add('rigth');
         rigthAnswers++;
         document.querySelector('.rigthCounter').innerHTML = rigthAnswers;

@@ -59,6 +59,34 @@ const cuestionary = [
     {
         "audio_question": "../../audio/audio_animales/Audio_gato.mp3",
         "image_answer": ["../../img/imganimales/gato_animado2.png", "../../img/imganimales/raton_animado.png"]
+    },
+    {
+        "audio_question": "../../audio/audio_animales/Rana.mp3",
+        "image_answer": ["../../img/imganimales/rana.png", "../../img/imganimales/grillo.png"]
+    },
+    {
+        "audio_question": "../../audio/audio_animales/Grillo.mp3",
+        "image_answer": ["../../img/imganimales/grillo.png", "../../img/imganimales/oveja.png"]
+    },
+    {
+        "audio_question": "../../audio/audio_animales/Gaviota.mp3",
+        "image_answer": ["../../img/imganimales/gaviota.png", "../../img/imganimales/gallo.png"]
+    },
+    {
+        "audio_question": "../../audio/audio_animales/Mono.mp3",
+        "image_answer": ["../../img/imganimales/mono.png", "../../img/imganimales/oso_animado.png"]
+    },
+    {
+        "audio_question": "../../audio/audio_animales/Oveja.mp3",
+        "image_answer": ["../../img/imganimales/oveja.png", "../../img/imganimales/elefante_animado.png"]
+    },
+    {
+        "audio_question": "../../audio/audio_animales/Gallo.mp3",
+        "image_answer": ["../../img/imganimales/gallo.png", "../../img/imganimales/buho_animado.png"]
+    },
+    {
+        "audio_question": "../../audio/audio_animales/Halcon.mp3",
+        "image_answer": ["../../img/imganimales/aguila_animada.png", "../../img/imganimales/gallina_animada.png"]
     }
 ];
 
@@ -85,8 +113,10 @@ const printHTMLQuestion = (i) => {
     if (imageQuestion != null) {
         document.querySelector('#imgQuestion').setAttribute("src", imageQuestion);
         document.querySelector('#imgQuestion').style.display = 'block';
+        document.querySelector('.jumbotron').style.display = 'none';
     } else {
         document.querySelector('#imgQuestion').style.display = 'none';
+        document.querySelector('.jumbotron').style.display = 'block';
     }
 
     a = a.sort((a, b) => Math.floor(Math.random() * 3) - 1);
@@ -125,6 +155,7 @@ const evaluateAnswer = (answer, obj) => {
             printHTMLQuestion(numero);
         } else {
             audio_section.pause();
+            document.querySelector('.container').style.display = 'none';
             document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
             document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
             document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;

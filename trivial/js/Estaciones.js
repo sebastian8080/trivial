@@ -50,21 +50,21 @@ const cuestionary = [
     },
     {
         "image_question": "../../img/imgestaciones/flor_primavera.png",
-        "audio_question": "../../audio/audio_animales/Audio_pato.mp3",
+        "audio_question": "../../audio/audio_estaciones/salen_flores.mp3",
         "image_answer": ["../../img/imgestaciones/primavera.jpg", "../../img/imgestaciones/otoño.jpg"]
     },
     {
         "image_question": "../../img/imgestaciones/niños_jugando_otoño.png",
-        "audio_question": "../../audio/audio_animales/Audio_perro.mp3",
+        "audio_question": "../../audio/audio_estaciones/niños_juegan_otoño.mp3",
         "image_answer": ["../../img/imgestaciones/otoño3.jpg", "../../img/imgestaciones/primavera2.jpg"]
     },
     {
-        "audio_question": "../../audio/audio_animales/Audio_leon.mp3",
+        "audio_question": "../../audio/audio_estaciones/clima_caliente_verano.mp3",
         "image_answer": ["../../img/imgestaciones/verano2.jpg", "../../img/imgestaciones/invierno.jpg"]
     },
     {
         "image_question": "../../img/imgestaciones/niña_arropada.png",
-        "audio_question": "../../audio/audio_animales/Audio_gato.mp3",
+        "audio_question": "../../audio/audio_estaciones/arropada_invierno.mp3",
         "image_answer": ["../../img/imgestaciones/invierno4.png", "../../img/imgestaciones/verano3.png"]
     }
 ];
@@ -85,7 +85,6 @@ function detectarBoton(event) {
 
 
 const printHTMLQuestion = (i) => {
-        console.log("currenQuestionIndex: " + currentQuestionIndex + " longitud_array: " + longitud_array);
         const q = cuestionary[i];
         let a = q.image_answer;
         imageQuestion = q.image_question;

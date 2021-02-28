@@ -35,7 +35,6 @@ const cuestionary = [
         "image_answer": ["../../img/imgmonedas/1dolar.jpeg", "../../img/imgmonedas/billete5dolares.jpg"]
     },
     {
-        "image_question": "../../img/imgfigurasgeometricas/cilindro_papel.png",
         "audio_question": "../../audio/audio_animales/Audio_ballena.mp3",
         "image_answer": ["../../img/imgmonedas/billete10dolares.jpg", "../../img/imgmonedas/billete20dolares.jpg"]
     },
@@ -58,6 +57,11 @@ const cuestionary = [
     {
         "audio_question": "../../audio/audio_animales/Audio_gato.mp3",
         "image_answer": ["../../img/imgmonedas/billete5dolares.jpg", "../../img/imgmonedas/billete20dolares.jpg"]
+    },
+    {
+        "image_question": "../../img/imgmonedas/Monedas.png",
+        "audio_question": "../../audio/audio_animales/Audio_gato.mp3",
+        "image_answer": ["../../img/imgmonedas/50centavos.png", "../../img/imgmonedas/5centavos.png"]
     }
 ];
 
@@ -83,8 +87,10 @@ const printHTMLQuestion = (i) => {
     if (imageQuestion != null) {
         document.querySelector('#imgQuestion').setAttribute("src", imageQuestion);
         document.querySelector('#imgQuestion').style.display = 'block';
+        document.querySelector('.jumbotron').style.display = 'none';
     } else {
         document.querySelector('#imgQuestion').style.display = 'none';
+        document.querySelector('.jumbotron').style.display = 'block';
     }
 
     a = a.sort((a, b) => Math.floor(Math.random() * 3) - 1);

@@ -57,6 +57,28 @@ const cuestionary = [
     {
         "audio_question": "../../audio/audio_objetos_clase/basurero_pupitre.mp3",
         "image_answer": ["../../img/imgobjetosclase/basurero.png", "../../img/imgobjetosclase/pupitre.png"]
+    },
+    {
+        "audio_question": "../../audio/audio_objetos_clase/Calculadora.mp3",
+        "image_answer": ["../../img/imgobjetosclase/calculadora.png", "../../img/imgobjetosclase/regla.png"]
+    },
+    {
+        "image_question": "../../img/imgfigurasgeometricas/circulo.png",
+        "audio_question": "../../audio/audio_objetos_clase/compas.mp3",
+        "image_answer": ["../../img/imgobjetosclase/compas.png", "../../img/imgobjetosclase/tijera.png"]
+    },
+    {
+        "audio_question": "../../audio/audio_objetos_clase/Pinturas.mp3",
+        "image_answer": ["../../img/imgobjetosclase/lapices_de_colores.png", "../../img/imgobjetosclase/corrector.png"]
+    },
+    {
+        "audio_question": "../../audio/audio_objetos_clase/Mapa.mp3",
+        "image_answer": ["../../img/imgobjetosclase/mapa_mundo.png", "../../img/imgobjetosclase/calendario.png"]
+    },
+    {
+        "image_question": "../../img/imgobjetosclase/pizarra_blanca.png",
+        "audio_question": "../../audio/audio_objetos_clase/Pizarra.mp3",
+        "image_answer": ["../../img/imgobjetosclase/marcador.png", "../../img/imgobjetosclase/lapiz.png"]
     }
 ];
 
@@ -74,13 +96,20 @@ function detectarBoton(event){
 }
 
 const printHTMLQuestion = (i) => {
-    //currentQuestionIndex++;
-    let longitud_array = Object.keys(cuestionary).length;
 
-    // if (currentQuestionIndex <= longitud_array - 1) {
         const q = cuestionary[i];
         let a = q.image_answer;
+        imageQuestion = q.image_question;
         rigthAnswer = a[0];
+
+        if (imageQuestion != null) {
+            document.querySelector('#imgQuestion').setAttribute('src', imageQuestion);
+            document.querySelector('#imgQuestion').style.display = 'block';
+            document.querySelector('.jumbotron').style.display = 'none';
+        } else {
+            document.querySelector('#imgQuestion').style.display = 'none';
+            document.querySelector('.jumbotron').style.display = 'block';
+        }
 
         a = a.sort((a, b) => Math.floor(Math.random() * 3) - 1);
 

@@ -18,24 +18,29 @@ let imageQuestion;
 
 const cuestionary = [
     {
+        "audio_section": "audio",
+        "image_question": "../../img/imghigiene/comer.png",
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/boca.png", "../../img/imgcuerpohumano/cerebro.png"]
+        "image_answer": ["../../img/imghigiene/lavarse_manos.png", "../../img/imghigiene/cepillarse_dientes.png"]
     },
     {
+        "image_question": "../../img/imghigiene/niño_sucio.jpg",
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/corazon.png", "../../img/imgcuerpohumano/estomago.png"]
+        "image_answer": ["../../img/imghigiene/niño_duchandose.jpg", "../../img/imghigiene/niño_durmiendo.jpg"]
     },
     {
+        "image_question": "../../img/imghigiene/comer2.jpg",
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/mano.png", "../../img/imgcuerpohumano/intestino.png"]
+        "image_answer": ["../../img/imghigiene/cepillarse_dientes2.png", "../../img/imghigiene/peinarse.png"]
     },
     {
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
         "image_answer": ["../../img/imgcuerpohumano/nariz.png", "../../img/imgcuerpohumano/ojo.png"]
     },
     {
+        "image_question": "../../img/imghigiene/germenes.png",
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/oreja.png", "../../img/imgcuerpohumano/pie.png"]
+        "image_answer": ["../../img/imghigiene/gel_antibacterial.png", "../../img/imghigiene/comer.png"]
     },
     {
         "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
