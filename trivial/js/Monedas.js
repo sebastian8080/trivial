@@ -19,49 +19,64 @@ let imageQuestion;
 const cuestionary = [
     {
         "audio_section": "../../audio/audio_animales/Musica_fondo.mp3",
-        "audio_question": "../../audio/audio_animales/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgmonedas/centavo.png", "../../img/imgmonedas/5centavos.png"]
+        "audio_question": "../../audio/audio_monedas/centavo.mp3",
+        "image_answer": ["../../img/imgmonedas/centavo.png", "../../img/imgmonedas/5centavos.png"] //Ya esta audio
     },
     {
-        "audio_question": "../../audio/audio_animales/Cual_de_los_siguientes_animales_hace_este_sonido.mp3",
-        "image_answer": ["../../img/imgmonedas/10centavos.png", "../../img/imgmonedas/25centavos.png"]
+        "audio_question": "../../audio/audio_monedas/10centavos.mp3",
+        "image_answer": ["../../img/imgmonedas/10centavos.png", "../../img/imgmonedas/25centavos.png"] // Ya esta audio
     },
     {
-        "audio_question": "../../audio/audio_animales/Cual_de_estos_dos_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgmonedas/50centavos.png", "../../img/imgmonedas/dolar.png"]
+        "audio_question": "../../audio/audio_monedas/50centavos.mp3",
+        "image_answer": ["../../img/imgmonedas/50centavos.png", "../../img/imgmonedas/dolar.png"] // Ya esta el sonido
     },
     {
-        "audio_question": "../../audio/audio_animales/Que_animal_hace_asi.mp3",
-        "image_answer": ["../../img/imgmonedas/1dolar.jpeg", "../../img/imgmonedas/billete5dolares.jpg"]
+        "audio_question": "../../audio/audio_monedas/dolar.mp3",
+        "image_answer": ["../../img/imgmonedas/1dolar.jpeg", "../../img/imgmonedas/billete5dolares.jpg"] // Ya esta
     },
     {
-        "audio_question": "../../audio/audio_animales/Audio_ballena.mp3",
-        "image_answer": ["../../img/imgmonedas/billete10dolares.jpg", "../../img/imgmonedas/billete20dolares.jpg"]
+        "audio_question": "../../audio/audio_monedas/10dolares.mp3",
+        "image_answer": ["../../img/imgmonedas/billete10dolares.jpg", "../../img/imgmonedas/billete20dolares.jpg"]  //Ya esta el audio
     },
     {
-        "audio_question": "../../audio/audio_animales/Audio_elefante.mp3",
-        "image_answer": ["../../img/imgmonedas/billete50dolares.jpg", "../../img/imgmonedas/billete100dolares.jpg"]
+        "audio_question": "../../audio/audio_monedas/50dolares.mp3",
+        "image_answer": ["../../img/imgmonedas/billete50dolares.jpg", "../../img/imgmonedas/billete100dolares.jpg"] // Ya esta el audio
     },
     {
-        "audio_question": "../../audio/audio_animales/Audio_pato.mp3",
-        "image_answer": ["../../img/imgmonedas/25centavos.png", "../../img/imgmonedas/5centavos.png"]
+        "audio_question": "../../audio/audio_monedas/25centavos.mp3",
+        "image_answer": ["../../img/imgmonedas/25centavos.png", "../../img/imgmonedas/5centavos.png"] //YA
     },
     {
-        "audio_question": "../../audio/audio_animales/Audio_perro.mp3",
-        "image_answer": ["../../img/imgmonedas/dolar.png", "../../img/imgmonedas/centavo.png"]
+        "audio_question": "../../audio/audio_monedas/dolar_monedas.mp3",
+        "image_answer": ["../../img/imgmonedas/dolar.png", "../../img/imgmonedas/centavo.png"] // YA
     },
     {
-        "audio_question": "../../audio/audio_animales/Audio_leon.mp3",
-        "image_answer": ["../../img/imgmonedas/1dolar.jpeg", "../../img/imgmonedas/50centavos.png"]
+        "audio_question": "../../audio/audio_monedas/dolar_mayor_valor.mp3",
+        "image_answer": ["../../img/imgmonedas/1dolar.jpeg", "../../img/imgmonedas/50centavos.png"] //YA
     },
     {
-        "audio_question": "../../audio/audio_animales/Audio_gato.mp3",
-        "image_answer": ["../../img/imgmonedas/billete5dolares.jpg", "../../img/imgmonedas/billete20dolares.jpg"]
+        "audio_question": "../../audio/audio_monedas/billete_5_dolares.mp3",
+        "image_answer": ["../../img/imgmonedas/billete5dolares.jpg", "../../img/imgmonedas/billete20dolares.jpg"]//YA
     },
     {
         "image_question": "../../img/imgmonedas/Monedas.png",
-        "audio_question": "../../audio/audio_animales/Audio_gato.mp3",
-        "image_answer": ["../../img/imgmonedas/50centavos.png", "../../img/imgmonedas/5centavos.png"]
+        "audio_question": "../../audio/audio_monedas/suma50centavos.mp3",
+        "image_answer": ["../../img/imgmonedas/50centavos.png", "../../img/imgmonedas/5centavos.png"] // YA
+    },
+    {
+        "image_question": "../../img/imgmonedas/Suma5Centavos.png",
+        "audio_question": "../../audio/audio_monedas/suma10centavos.mp3",
+        "image_answer": ["../../img/imgmonedas/10centavos.png", "../../img/imgmonedas/25centavos.png"]// YA
+    },
+    {
+        "image_question": "../../img/imgmonedas/Suma25Centavos.png",
+        "audio_question": "../../audio/audio_monedas/sumadolar.mp3",
+        "image_answer": ["../../img/imgmonedas/dolar.png", "../../img/imgmonedas/centavo.png"] //YA
+    },
+    {
+        "image_question": "../../img/imgmonedas/SumaCentavos25.png",
+        "audio_question": "../../audio/audio_monedas/suma25centavos.mp3",
+        "image_answer": ["../../img/imgmonedas/25centavos.png", "../../img/imgmonedas/50centavos.png"] //YA
     }
 ];
 
@@ -126,6 +141,7 @@ const evaluateAnswer = (answer, obj) => {
             printHTMLQuestion(numero);
         } else {
             audio_section.pause();
+            document.querySelector('.container').style.display = 'none';
             document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
             document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
             document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;

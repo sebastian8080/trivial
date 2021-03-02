@@ -86,7 +86,7 @@ const cuestionary = [
     },
     {
         "audio_question": "../../audio/audio_animales/Halcon.mp3",
-        "image_answer": ["../../img/imganimales/aguila_animada.png", "../../img/imganimales/gallina_animada.png"]
+        "image_answer": ["../../img/imganimales/aguila_animada.png", "../../img/imganimales/gallina_animada.png"]    
     }
 ];
 

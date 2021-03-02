@@ -148,6 +148,7 @@ const evaluateAnswer = (answer, obj) => {
             printHTMLQuestion(numero);
         } else {
             audio_section.pause();
+            document.querySelector('.container').style.display = 'none';
             document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
             document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
             document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;

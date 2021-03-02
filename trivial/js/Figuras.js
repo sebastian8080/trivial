@@ -20,48 +20,48 @@ let imageQuestion;
 const cuestionary = [
     {
         "audio_section": "../../audio/audio_animales/Musica_fondo.mp3",
-        "audio_question": "../../audio/audio_animales/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_figuras/cuadrado.mp3",
         "image_answer": ["../../img/imgfigurasgeometricas/cuadrado.png", "../../img/imgfigurasgeometricas/hexagono.png"]
     },
     {
-        "audio_question": "../../audio/audio_animales/Cual_de_los_siguientes_animales_hace_este_sonido.mp3",
+        "audio_question": "../../audio/audio_figuras/triangulo.mp3",
         "image_answer": ["../../img/imgfigurasgeometricas/triangulo.png", "../../img/imgfigurasgeometricas/rombo.png"]
     },
     {
-        "audio_question": "../../audio/audio_animales/Cual_de_estos_dos_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_figuras/circulo.mp3",
         "image_answer": ["../../img/imgfigurasgeometricas/circulo.png", "../../img/imgfigurasgeometricas/ovalo2.png"]
     },
     {
-        "audio_question": "../../audio/audio_animales/Que_animal_hace_asi.mp3",
+        "audio_question": "../../audio/audio_figuras/esfera.mp3",
         "image_answer": ["../../img/imgfigurasgeometricas/esfera.png", "../../img/imgfigurasgeometricas/circulo1.png"]
     },
     {
         "image_question": "../../img/imgfigurasgeometricas/cilindro_papel.png",
-        "audio_question": "../../audio/audio_animales/Audio_ballena.mp3",
+        "audio_question": "../../audio/audio_figuras/cilindro.mp3",
         "image_answer": ["../../img/imgfigurasgeometricas/cilindro.png", "../../img/imgfigurasgeometricas/cono.png"]
     },
     {
-        "audio_question": "../../audio/audio_animales/Audio_elefante.mp3",
+        "audio_question": "../../audio/audio_figuras/rectangulo.mp3",
         "image_answer": ["../../img/imgfigurasgeometricas/rectangulo.png", "../../img/imgfigurasgeometricas/cuadrado1.png"]
     },
     {
         "image_question": "../../img/imgfigurasgeometricas/cubo_regalo.png",
-        "audio_question": "../../audio/audio_animales/Audio_pato.mp3",
+        "audio_question": "../../audio/audio_figuras/cubo.mp3",
         "image_answer": ["../../img/imgfigurasgeometricas/cubo.png", "../../img/imgfigurasgeometricas/pentagono_3d.png"]
     },
     {
         "image_question": "../../img/imgfigurasgeometricas/cono_trafico.png",
-        "audio_question": "../../audio/audio_animales/Audio_perro.mp3",
+        "audio_question": "../../audio/audio_figuras/cono.mp3",
         "image_answer": ["../../img/imgfigurasgeometricas/cono1.png", "../../img/imgfigurasgeometricas/piramide.png"]
     },
-    {
+    {   
         "image_question": "../../img/imgfigurasgeometricas/fruta_circular.png",
-        "audio_question": "../../audio/audio_animales/Audio_leon.mp3",
+        "audio_question": "../../audio/audio_figuras/fruta_circular.mp3",
         "image_answer": ["../../img/imgfigurasgeometricas/circulo.png", "../../img/imgfigurasgeometricas/ovalo2.png"]
     },
     {
         "image_question": "../../img/imgfigurasgeometricas/triangulo_tienda_acampar.png",
-        "audio_question": "../../audio/audio_animales/Audio_gato.mp3",
+        "audio_question": "../../audio/audio_figuras/tienda_triangular.mp3",
         "image_answer": ["../../img/imgfigurasgeometricas/triangulo.png", "../../img/imgfigurasgeometricas/cilindro.png"]
     }
 ];
@@ -88,8 +88,10 @@ const printHTMLQuestion = (i) => {
     if (imageQuestion != null) {
         document.querySelector('#imgQuestion').setAttribute("src", imageQuestion);
         document.querySelector('#imgQuestion').style.display = 'block';
+        document.querySelector('.jumbotron').style.display = 'none';
     } else {
         document.querySelector('#imgQuestion').style.display = 'none';
+        document.querySelector('.jumbotron').style.display = 'block';
     }
 
     a = a.sort((a, b) => Math.floor(Math.random() * 3) - 1);
@@ -126,6 +128,7 @@ const evaluateAnswer = (answer, obj) => {
             printHTMLQuestion(numero);
         } else {
             audio_section.pause();
+            document.querySelector('.container').style.display = 'none';
             document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
             document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
             document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;

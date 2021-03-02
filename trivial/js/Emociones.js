@@ -20,47 +20,47 @@ let imageQuestion;
 const cuestionary = [
     {
         "audio_section": "../../audio/audio_emociones/musica_fondo.mp3",
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_emociones/asustado.mp3",
         "image_answer": ["../../img/imgemociones/chico_asustado.png", "../../img/imgemociones/emocion_duda.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_emociones/enano_sueño.mp3",
         "image_answer": ["../../img/imgemociones/enano_bostesando.png", "../../img/imgemociones/enano_feliz.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_emociones/persona_feliz.mp3",
         "image_answer": ["../../img/imgemociones/mujer_feliz.png", "../../img/imgemociones/hombre_sorprendido.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_emociones/persona_llorando.mp3",
         "image_answer": ["../../img/imgemociones/niño_llorando.png", "../../img/imgemociones/niño_enfermo.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_emociones/enamorado.mp3",
         "image_answer": ["../../img/imgemociones/sentimiento_amor.png", "../../img/imgemociones/niña_triste.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_emociones/enano_gruñon.mp3",
         "image_answer": ["../../img/imgemociones/enano_gruñon.png", "../../img/imgemociones/enano_timido.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_emociones/persona_dudando.mp3",
         "image_answer": ["../../img/imgemociones/emocion_duda1.png", "../../img/imgemociones/pensativa.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgemociones/niño_enfermo.png", "../../img/imgemociones/persona_cansada.png"]
+        "audio_question": "../../audio/audio_emociones/persona_cansada.mp3",
+        "image_answer": ["../../img/imgemociones/persona_cansada.png", "../../img/imgemociones/niño_enfermo.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_emociones/persona_triste.mp3",
         "image_answer": ["../../img/imgemociones/triste.png", "../../img/imgemociones/chica_feliz.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_emociones/enojo_intensamente.mp3",
         "image_answer": ["../../img/imgemociones/enojo_intensamente.png", "../../img/imgemociones/temor_intensamente.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_emociones/triste_intensamente.mp3",
         "image_answer": ["../../img/imgemociones/tristeza_intensamente.png", "../../img/imgemociones/desagrado_intensamente.png"]
     },
     {
@@ -119,6 +119,7 @@ const evaluateAnswer = (answer, obj) => {
             printHTMLQuestion(numero);
         } else {
             audio_section.pause();
+            document.querySelector('.container').style.display = 'none';
             document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
             document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
             document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;

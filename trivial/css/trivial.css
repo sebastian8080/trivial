@@ -53,9 +53,11 @@ img{
 
 #imgQuestion{
     display: none;
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 240px;
     margin: auto;
+    margin-top: 50px;
+    margin-bottom: 0px;
 }
 
 h2{

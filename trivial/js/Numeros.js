@@ -68,6 +68,22 @@ const cuestionary = [
         "image_question": "../../img/imgnumeros/tren.png",
         "audio_question": "../../audio/audio_numeros/2.mp3",
         "image_answer": ["../../img/imgnumeros/2.png", "../../img/imgnumeros/5.png"]
+    },
+    {
+        "audio_question": "../../audio/audio_numeros/#",
+        "image_question": ["../../img/imgnumeros/suma.png", "../../img/imgnumeros/resta.png"]
+    },
+    {
+        "audio_question": "../../audio/audio_numeros/#",
+        "image_question": ["../../img/imgnumeros/resta.png", "../../img/imgnumeros/multipliacion.png"]
+    },
+    {
+        "audio_question": "../../audio/audio_numeros/#",
+        "image_question": ["../../img/imgnumeros/multiplicacion.png", "../../img/imgnumeros/suma.png"]
+    },
+    {
+        "audio_question": "../../audio/audio_numeros/#",
+        "image_question": ["../../img/imgnumeros/division.png", "../../img/imgnumeros/resta.png"]
     }
 ];
 

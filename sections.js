@@ -57,7 +57,7 @@ const secciones = [
         "url": "trivial/html/Numeros.html"
     },
     {
-        "seccion_name": "HIGIENE",
+        "seccion_name": "HIGIENE Y SALUD",
         "imagen": "img/imgsections/higiene.png",
         "url": "trivial/html/Higiene.html"
     }

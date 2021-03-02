@@ -87,6 +87,7 @@ function detectarBoton(event) {
     }
     objeto = document.getElementById("grid1");
     evaluateAnswer(respuesta, objeto);
+
 }
 
 const printHTMLQuestion = (i) => {
@@ -95,12 +96,12 @@ const printHTMLQuestion = (i) => {
     imageQuestion = q.image_question;
     rigthAnswer = a[0];
 
-    if (imageQuestion != null) {
+    if(imageQuestion != null) {
         document.querySelector('#imgQuestion').setAttribute("src", imageQuestion);
         document.querySelector('#imgQuestion').style.display = 'block';
         document.querySelector('.jumbotron').style.display = 'none';
     } else {
-        document.querySelector('#imgQuestion').style.display = 'none';
+        document.getElementById('imgQuestion').style.display = 'none';
         document.querySelector('.jumbotron').style.display = 'block';
     }
 
@@ -137,6 +138,7 @@ const evaluateAnswer = (answer, obj) => {
             printHTMLQuestion(numero);
         } else {
             audio_section.pause();
+            document.querySelector('.container').style.display = 'none';
             document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
             document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
             document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;

@@ -12,51 +12,58 @@ let audio, audio_section;
 let respuesta, objeto;
 
 //Variable para el titulo
-let titulo = "La Higiene";
+let titulo = "Higiene y Salud";
 
 let imageQuestion;
 
 const cuestionary = [
     {
-        "audio_section": "audio",
+        "audio_section": "../../audio/audio_higiene/Musica_fondo.mp3",
         "image_question": "../../img/imghigiene/comer.png",
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_higiene/lavarse_manos.mp3",
         "image_answer": ["../../img/imghigiene/lavarse_manos.png", "../../img/imghigiene/cepillarse_dientes.png"]
     },
     {
         "image_question": "../../img/imghigiene/niño_sucio.jpg",
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_higiene/bañarse.mp3",
         "image_answer": ["../../img/imghigiene/niño_duchandose.jpg", "../../img/imghigiene/niño_durmiendo.jpg"]
     },
     {
         "image_question": "../../img/imghigiene/comer2.jpg",
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_higiene/cepillarse_dientes.mp3",
         "image_answer": ["../../img/imghigiene/cepillarse_dientes2.png", "../../img/imghigiene/peinarse.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/nariz.png", "../../img/imgcuerpohumano/ojo.png"]
-    },
-    {
         "image_question": "../../img/imghigiene/germenes.png",
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
+        "audio_question": "../../audio/audio_higiene/gel_antibacterial.mp3",
         "image_answer": ["../../img/imghigiene/gel_antibacterial.png", "../../img/imghigiene/comer.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/pulmones.png", "../../img/imgcuerpohumano/riñon.png"]
+        "image_question": "../../img/imghigiene/cepillarse_dientes3.png",
+        "audio_question": "../../audio/audio_higiene/vaso_de_agua.mp3",
+        "image_answer": ["../../img/imghigiene/vaso_de_agua.png", "../../img/imghigiene/grifo_de_agua.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/lengua.png", "../../img/imgcuerpohumano/nariz.png"]
+        "image_question": "../../img/imghigiene/distanciamiento.png",
+        "audio_question": "../../audio/audio_higiene/distanciamiento.mp3",
+        "image_answer": ["../../img/imghigiene/2metros.jpg", "../../img/imghigiene/1metro.jpg"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/pierna.png", "../../img/imgcuerpohumano/mano.png"]
+        "image_question": "../../img/imghigiene/gripe.png",
+        "audio_question": "../../audio/audio_higiene/mascarilla.mp3",
+        "image_answer": ["../../img/imghigiene/mascarilla.png", "../../img/imghigiene/sin_mascarilla.png"]
     },
     {
-        "audio_question": "../../audio/Cual_de_los_siguientes_animales_hace_el_siguiente_sonido.mp3",
-        "image_answer": ["../../img/imgcuerpohumano/cerebro.png", "../../img/imgcuerpohumano/intestino.png"]
+        "audio_question": "../../audio/audio_higiene/estornudar.mp3",
+        "image_answer": ["../../img/imghigiene/toser_bien.png", "../../img/imghigiene/toser_mal.png"]
+    },
+    {
+        "audio_question": "../../audio/audio_higiene/dormir_pronto.mp3",
+        "image_answer": ["../../img/imghigiene/dormir_pronto.jpg", "../../img/imghigiene/jugar_juegos.jpg"]
+    },
+    {
+        "audio_question": "../../audio/audio_higiene/alimentacion_sana.mp3",
+        "image_answer": ["../../img/imghigiene/comida_sana.png", "../../img/imghigiene/comida_chatarra.png"]
     }
 ];
 
@@ -76,7 +83,17 @@ function detectarBoton(event) {
 const printHTMLQuestion = (i) => {
     const q = cuestionary[i];
     let a = q.image_answer;
+    imageQuestion = q.image_question;
     rigthAnswer = a[0];
+
+    if (imageQuestion != null) {
+        document.querySelector('#imgQuestion').setAttribute("src", imageQuestion);
+        document.querySelector('#imgQuestion').style.display = 'block';
+        document.querySelector('.jumbotron').style.display = 'none';
+    } else {
+        document.querySelector('#imgQuestion').style.display = 'none';
+        document.querySelector('.jumbotron').style.display = 'block';
+    }
 
     a = a.sort((a, b) => Math.floor(Math.random() * 3) - 1);
 
@@ -110,6 +127,7 @@ const evaluateAnswer = (answer, obj) => {
             printHTMLQuestion(numero);
         } else {
             audio_section.pause();
+            document.querySelector('.container').style.display = 'none'; 
             document.querySelector('#parrafoIntentos').innerHTML = rigthAnswers + wrongAnswers;
             document.querySelector('#parrafoCorrectas').innerHTML = rigthAnswers;
             document.querySelector('#parrafoIncorrectas').innerHTML = wrongAnswers;
